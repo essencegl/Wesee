@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html class="noIE" lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<title>WE See 电影</title>
+	<meta name="description" content="we-see"/>
+	<meta name="keywords" content="movie"/>
+	<link rel="stylesheet" href="css/minified.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/owl.theme.css">
+	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');</script>
+	<script src="js/modernizr.min.js"></script>	
+</head>
+
+<body class="home">
+<div id="page-wrapper">
+	<header id="site-header" role="banner">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-7">
+						<div class="contact-info">
+							<i class="iconfont-headphones round-icon"></i>
+							<strong>Welcome to WE-SEE movie</strong>
+							</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-5">
+						<ul class="actions unstyled clearfix">
+							<li>
+								<div class="search-box">
+									<form action="#" method="post">
+										<div class="input-iconed prepend">
+											<button class="input-icon"><i class="iconfont-search"></i></button>
+											<label for="input-search" class="placeholder">Search here…</label>
+											<input type="text" name="q" id="input-search" class="round-input full-width" required />
+										</div>
+									</form>
+								</div>
+							</li>
+							<li data-toggle="sub-header" data-target="#sub-social">
+								<a href="checkout.html" id="social-icons">
+									<i class="iconfont-share round-icon"></i>
+								</a>
+								登陆
+							</li>
+							<li data-toggle="sub-header" data-target="#sub-cart">
+								<a href="register.html" id="total-cart">
+									<i class="iconfont-shopping-cart round-icon"></i>
+								</a>
+								注册
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- ADD TO CART MESSAGE -->
+			<div class="cart-notification">
+				<ul class="unstyled"></ul>
+			</div>
+			<!-- // ADD TO CART MESSAGE -->
+		</div>
+
+
+		<div class="main-header-wrapper">
+			<div class="container">
+				<div class="main-header">
+					<div class="logo-wrapper">
+						We See
+					</div>
+					<nav id="site-menu" role="navigation">
+						<ul class="main-menu hidden-sm hidden-xs">
+							<li class="active">
+								<a href="index.html">主页</a>
+							</li>
+							<li>
+								<a href="products.html">正在热映</a>
+							</li>
+							<li>
+								<a href="products2.html">即将上映</a>
+							</li>
+							<li>
+								<a href="components.html">个人中心</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+		
+		<!-- HOMEPAGE SLIDER -->
+	<div id="home-slider">
+		<div class="flexslider">
+			<ul class="slides">
+				<li>
+					<img src="img/slides/3.jpg" />				
+				</li>
+				
+				<li>
+					<img src="img/slides/1.jpg" />				
+				</li>
+				<li>
+					<img src="img/slides/2.jpg" />	
+				</li>
+				
+			</ul>
+		</div>
+		<script>
+			jQuery(function($) {
+				var $slider = $('#home-slider > .flexslider');
+				$slider.find('.flex-caption').each(function() {
+					var $this = $(this);
+					var configs = {
+						left: $this.data('x'),
+						top: $this.data('y'),
+						speed: $this.data('speed') + 'ms',
+						delay: $this.data('start') + 'ms'
+					};
+					if ( configs.left == 'center' && $this.width() !== 0 ) 
+					{
+						configs.left = ( $slider.width() - $this.width() ) / 2;
+					}
+					if ( configs.top == 'center' && $this.height() !== 0 ) 
+					{
+						configs.top = ( $slider.height() - $this.height() ) / 2;
+					}
+					
+					$this.data('positions', configs);
+					
+					$this.css({
+						'left': configs.left + 'px',
+						'top': configs.top + 'px',
+						'animation-duration': configs.speed,
+						'animation-delay': configs.delay
+					});
+				});
+				
+				$(window).on('resize', function() {
+					var wW = $(window).width(),
+						zoom = ( wW >= 1170 ) ? 1 : wW / 1349;
+					$('.flex-caption.gfc').css('zoom', zoom);
+				});
+				$(window).trigger('resize');
+				
+				
+				
+				$slider.imagesLoaded(function() {
+					$slider.flexslider({
+						animation: 'slide',
+						easing: 'easeInQuad',
+						slideshow: false,
+						nextText: '<i class="iconfont-angle-right"></i>',
+						prevText: '<i class="iconfont-angle-left"></i>',
+						start: function() {
+							flex_fix_pos(1);
+						},
+						before: function(slider) {
+							// initial caption animation for next show
+							$slider.find('.slides li .animation-done').each(function() {
+								$(this).removeClass('animation-done');
+								var animation = $(this).attr('data-animation');
+								$(this).removeClass(animation);
+							});
+							
+							flex_fix_pos(slider.animatingTo + 1);
+						},
+						after: function() {
+							// run caption animation
+							$slider.find('.flex-active-slide .animated').each(function() {
+								var animation = $(this).attr('data-animation');
+								$(this).addClass('animation-done').addClass(animation);
+							});
+						}
+					});
+				});
+				
+				
+				function flex_fix_pos(i) {
+					$slider.find('.slides > li:eq(' + i + ') .gfc').each(function() {
+						var $this = $(this),
+							pos = $(this).data('positions');
+							
+						if ( pos.left == 'center' )
+						{
+							pos.left = ( $slider.width() - $this.width() ) / 2;
+							$this.css('left', pos.left + 'px');
+							$this.data('positions', pos);
+						}
+						if ( pos.top == 'center' )
+						{
+							pos.top = ( $slider.height() - $this.height() ) / 2;
+							$this.css('left', pos.top + 'px');
+							$this.data('positions', pos);
+						}
+					});
+				}
+			});
+		</script>
+	</div>
+
+		<main id="main-content" role="main">		
+			<section class="section featured visible-items-4">
+				<div class="container">
+					<div class="row">
+						<header class="section-header clearfix col-sm-6">
+							<h3 class="section-title">正在热映</h3>
+						</header>
+						
+						<div class="clearfix"></div>
+
+						<div id="new-arrivals-products" class="add-cart" data-product=".product" data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-price > .price">
+					
+						<div class="owl-controls clickable outside">
+							<div class="owl-buttons">
+								<div class="owl-prev"><i class="iconfont-angle-left"></i></div>
+								<div class="owl-next"><i class="iconfont-angle-right"></i></div>
+							</div>
+						</div>
+							
+							<div class="owl-carousel owl-theme" data-visible-items="4" data-navigation="true" data-lazyload="true">
+								<div class="product" data-product-id="1">
+									<div class="entry-media">
+										<img data-src="images/poster/1.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<a href="product.html" class="entry-url"></a>
+											<ul class="icons unstyled">
+												<li>
+													<div class="circle ribbon ribbon-sale">Sale</div>
+												</li>
+												<li>
+													<a href="images/poster/1.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="product.html">爱乐之城La La Land</a>
+										</h5>
+										<div class="entry-links clearfix">
+											<a href="product.html" class="pull-left m-r">影片详情</a>
+											<a href="#" class="pull-right">选座购票</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="2">
+									<div class="entry-media">
+										<img data-src="images/poster/2.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<a href="product.html" class="entry-url"></a>
+											<ul class="icons unstyled">
+												<li>
+													<div class="circle ribbon ribbon-new">New</div>
+												</li>
+												<li>
+													<a href="images/poster/2.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">变形金刚5最后的骑士</a>
+										</h5>
+										<div class="entry-links clearfix">
+											<a href="#" class="pull-left m-r">影片详情</a>
+											<a href="#" class="pull-right">选座购票</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="3">
+									<div class="entry-media">
+										<img data-src="images/poster/3.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<a href="product.html" class="entry-url"></a>
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster/3.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">攻壳机动队Ghost Shell</a>
+										</h5>
+										<div class="entry-links clearfix">
+											<a href="#" class="pull-left m-r">影片详情</a>
+											<a href="#" class="pull-right">选座购票</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="4">
+									<div class="entry-media">
+										<img data-src="images/poster/4.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<a href="product.html" class="entry-url"></a>
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster/4.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">加勒比海盗5：死无对证</a>
+										</h5>
+										<div class="entry-links clearfix">
+											<a href="#" class="pull-left m-r">影片详情</a>
+											<a href="#" class="pull-right">选座购票</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="5">
+									<div class="entry-media">
+										<img data-src="images/poster/5.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<a href="product.html" class="entry-url"></a>
+											<ul class="icons unstyled">
+												<li>
+													<div class="circle ribbon ribbon-sale">Sale</div>
+												</li>
+												<li>
+													<a href="images/poster/5.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">金刚狼3：殊死一战</a>
+										</h5>
+										<div class="entry-links clearfix">
+											<a href="#" class="pull-left m-r">影片详情</a>
+											<a href="#" class="pull-right">选座购票</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="6">
+									<div class="entry-media">
+										<img data-src="images/poster/6.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<a href="product.html" class="entry-url"></a>
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster/6.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">神奇女侠Wonder Woman</a>
+										</h5>
+										<div class="entry-links clearfix">
+											<a href="#" class="pull-left m-r">影片详情</a>
+											<a href="#" class="pull-right">选座购票</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="7">
+									<div class="entry-media">
+										<img data-src="images/poster/7.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<a href="product.html" class="entry-url"></a>
+											<ul class="icons unstyled">
+												<li>
+													<div class="circle ribbon ribbon-new">New</div>
+												</li>
+												<li>
+													<a href="images/poster/7.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">摔跤吧！爸爸</a>
+										</h5>
+										<div class="entry-links clearfix">
+											<a href="#" class="pull-left m-r">影片详情</a>
+											<a href="#" class="pull-right">选座购票</a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="8">
+									<div class="entry-media">
+										<img data-src="images/poster/8.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<a href="product.html" class="entry-url"></a>
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster/8.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">速度与激情8</a>
+										</h5>
+										<div class="entry-links clearfix">
+											<a href="#" class="pull-left m-r">影片详情</a>
+											<a href="#" class="pull-right">选座购票</a>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+								
+						</div>
+						<!-- // END CAROUSEL -->
+						
+					</div>
+				</div>
+			</section>
+			<!-- // FEATURED PRODUCTS -->
+			
+			<!-- NEW ARRIVAL PRODUCTS -->
+			<section class="section new-arrivals visible-items-5">
+				<div class="container">
+					<div class="row">
+						<header class="section-header clearfix col-sm-6">
+							<h3 class="section-title">即将上映</h3>
+						</header>
+						
+						<div class="clearfix"></div>
+						
+						<!-- BEGIN CAROUSEL -->
+						<div id="new-arrivals-products" class="add-cart" data-product=".product" data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-price > .price">
+						
+							<div class="owl-controls clickable outside">
+								<div class="owl-buttons">
+									<div class="owl-prev"><i class="iconfont-angle-left"></i></div>
+									<div class="owl-next"><i class="iconfont-angle-right"></i></div>
+								</div>
+							</div>
+							
+							<div class="owl-carousel owl-theme" data-visible-items="5" data-navigation="true" data-lazyload="true">
+								<div class="product" data-product-id="9">
+									<div class="entry-media">
+										<img data-src="images/poster2/1.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster2/1.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">阿凡达2AVATAR2</a>
+										</h5>
+										<div class="entry-price">
+												<a href="#"><strong class="price">影片详情</strong></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="10">
+									<div class="entry-media">
+										<img data-src="images/poster2/2.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster2/2.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">捉妖记2 onster Hunt 2</a>
+										</h5>
+										<div class="entry-price">
+											<a href="#"><strong class="price">影片详情</strong></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="11">
+									<div class="entry-media">
+										<img data-src="images/poster2/3.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster2/3.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">西游记女儿国</a>
+										</h5>
+										<div class="entry-price">
+											<a href="#"><strong class="price">影片详情</strong></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="12">
+									<div class="entry-media">
+										<img data-src="images/poster2/4.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster2/4.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">摸金校尉之九幽将军</a>
+										</h5>
+										<div class="entry-price">
+											<a href="#"><strong class="price">影片详情</strong></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="product" data-product-id="13">
+									<div class="entry-media">
+										<img data-src="images/poster2/5.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster2/5.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">阴阳师Onmyoji 2018</a>
+										</h5>
+										<div class="entry-price">
+											<a href="#"><strong class="price">影片详情</strong></a>
+										</div>
+									</div>
+								</div>
+		
+								<div class="product" data-product-id="14">
+									<div class="entry-media">
+										<img data-src="images/poster2/6.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster2/6.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">星核 Star Core</a>
+										</h5>
+										<div class="entry-price">
+											<a href="#"><strong class="price">影片详情</strong></a>
+										</div>
+									</div>
+								</div>								
+
+								
+								<div class="product" data-product-id="15">
+									<div class="entry-media">
+										<img data-src="images/poster2/7.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster2/7.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#"> 阿修罗 Asura</a>
+										</h5>
+										<div class="entry-price">
+											<a href="#"><strong class="price">影片详情</strong></a>
+										</div>
+									</div>
+								</div>	
+								
+								<div class="product" data-product-id="16">
+									<div class="entry-media">
+										<img data-src="images/poster2/8.jpg" alt="" class="lazyOwl thumb" />
+										<div class="hover">
+											<ul class="icons unstyled">
+												<li>
+													<a href="images/poster2/8.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="entry-main">
+										<h5 class="entry-title">
+											<a href="#">英伦对决 The Foreigner</a>
+										</h5>
+										<div class="entry-price">
+											<a href="#"><strong class="price">影片详情</strong></a>
+										</div>
+									</div>
+								</div>	
+							</div>
+							
+						</div>
+						<!-- // END CAROUSEL -->
+						
+					</div>
+				</div>
+			</section>
+			<!-- // NEW ARRIVAL PRODUCTS -->
+			
+		</main>
+		<!-- // SITE MAIN CONTENT -->
+				
+		<!-- SITE FOOTER -->
+	<footer class="page-footer">
+		
+		<!-- WIDGET AREA -->
+		<div class="widgets">
+			<div class="section">
+				<div class="container">
+					<div class="row">
+						
+						<div class="col-xs-12 col-sm-12 col-md-3">
+							<section class="widget widget-menu">
+								<h5 class="widget-title">联系我们</h5>
+								<div class="widget-content">
+									<ul class="menu iconed-list unstyled">
+										<li>
+											<span class="list-icon"><i class="round-icon iconfont-map-marker"></i></span>
+											<div class="list-content">Sun Yat-sen University, SYSU</div>
+										</li>
+										<li>
+											<span class="list-icon"><i class="round-icon iconfont-phone"></i></span>
+											<div class="list-content">123-456-789</div>
+										</li>
+										<li>
+											<span class="list-icon"><i class="round-icon iconfont-envelope-alt"></i></span>
+											<div class="list-content">email@themina.com</div>
+										</li>
+									</ul>
+								</div>
+							</section>
+						</div>
+						
+						<div class="col-xs-12 col-sm-12 col-md-6">
+							<section class="widget widget-ads">
+								<div class="widget-content">
+									<div class="center-xs">
+										<div class="ads">
+											<a href="#">
+												<img src="images/demo/images-footer.jpg" alt="" />
+											</a>
+											<div class="ads-caption bottom-right">
+												<a href="#" class="btn btn-default btn-round">
+													<i class="round-icon iconfont-angle-right"></i>
+													<span class="inline-middle">More movie</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+						
+						<div class="col-xs-12 col-sm-12 col-md-3">
+							<section class="widget widget-subscription">
+							<div class="vmid">
+								<span class="uppercase">友情链接</span>
+								<a href="#"><img src="img/visacard.png" alt="" width="40" /></a>
+								<a href="#"><img src="img/mastercard.png" alt="" width="40" /></a>
+								<a href="#"><img src="img/paypal.png" alt="" width="40" /></a>
+							</div>
+							</section>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- // SECOND ROW -->
+			
+		</div>
+		<!-- // WIDGET AREA -->
+		
+		<div class="footer-sub">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<div class="footer-links center-xs clearfix">
+							@We-see movie
+						</div>
+						<div class="space10"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</footer>
+	<!-- // SITE FOOTER -->
+		
+</div>
+<!-- // PAGE WRAPPER -->
+
+<!-- Essential Javascripts -->
+<script src="js/minified.js"></script>
+<!-- // Essential Javascripts -->
+
+	<!-- Particular Page Javascripts -->
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- // Particular Page Javascripts -->
+</body>
+</html>

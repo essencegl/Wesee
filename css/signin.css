@@ -1,0 +1,145 @@
+body {
+  font-family: Arial, Sans-serif;
+  color: rgb(100,100,100);
+}
+
+#total_area {
+  position:fixed;
+  width: 300px;
+  height: 270px;
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -200px;
+}
+
+#content {
+  position: relative;
+  width: 300px;
+  height: 270px;
+  border-width: 4px 30px 4px 30px;
+  border-style: groove;
+  border-color: rgb(105,185,70);
+  border-radius: 100px 100px 0 0;
+  background-color: #CCFFFF;
+}
+
+#header {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: rgb(105,185,70);
+}
+
+#label_1 {
+  position: absolute;
+  left: 85px;
+  top: 75px;
+}
+
+#label_2 {
+  position: absolute;
+  left: 85px;
+  top: 115px;
+}
+
+form input {
+  width: 170px;
+  height: 30px;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 2px 1px rgb(160,160,160);
+}
+
+#button_1 {
+  outline: none;
+  position: absolute;
+  border-radius: 5px;
+  width: 250px;
+  height: 50px;
+  top: 170px;
+  background-color: rgb(105,185,70);
+  color: white;
+  font-size: 20px;
+  left: 30px;
+}
+
+.start {
+  position: absolute;
+  width: 200px;
+  height: 35px;
+  left: 270px;
+  font-size: 10px;
+  margin-top: 3px;
+  color: gray;
+}
+
+#statement_1 {top:78px;}
+#statement_2 {top:118px;}
+
+#user_photo {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 40px;
+  top: 75px;
+  background-image: url(user.png);
+}
+
+#password_photo {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 40px;
+  top: 115px;
+  background-image: url(password.png);
+}
+
+#goto_regist {
+  position: absolute;
+  left: 120px;
+  top: 240px;
+}
+
+a {
+  color: rgb(105,185,70);
+  font-weight: bold;
+  text-decoration:none;
+}
+
+#bubble_1 {
+  position: absolute;
+  left: 275px;
+  top: 90px;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #CCFFFF;
+  border: 2px solid rgb(105,185,70);
+}
+
+#bubble_2 {
+  position: absolute;
+  left: 285px;
+  top: 65px;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #CCFFFF;
+  border: 2px solid rgb(105,185,70);
+}
+
+#bubble_3 {
+  position: absolute;
+  left: 300px;
+  top: 40px;
+  height: 40px;
+  width: 140px;
+  border-radius: 20px;
+  background-color: #CCFFFF;
+  border: 2px solid rgb(105,185,70);
+}
