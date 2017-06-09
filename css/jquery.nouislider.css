@@ -35,6 +35,8 @@
 	*		The :after pseudo-element wont inherit
 	*		box-sizing, so it needs to applied manually.
 */
+
+
 .noUi-handle {
 	background: #fff;
 	height: 19px;
@@ -70,6 +72,8 @@
 	background: #fa6f57;
 	cursor: pointer;
 }
+
+
 .noUi-background {
 	background: #919191;
 }
