@@ -253,6 +253,7 @@ window.Modernizr = function(a, b, c) {
         }),
         a
     },
+    /*s.generatedcontent*/
     s.generatedcontent = function() {
         var a;
         return y(["#", h, "{font:0/0 a}#", h, ':after{content:"', l, '";visibility:hidden;font:3px/1 a}'].join(""),
