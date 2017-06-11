@@ -2,6 +2,10 @@
  * Build: http://modernizr.com/download/#-fontface-backgroundsize-borderimage-borderradius-boxshadow-flexbox-flexboxlegacy-hsla-multiplebgs-opacity-rgba-textshadow-cssanimations-csscolumns-generatedcontent-cssgradients-cssreflections-csstransforms-csstransforms3d-csstransitions-applicationcache-canvas-canvastext-draganddrop-hashchange-history-audio-video-indexeddb-input-inputtypes-localstorage-postmessage-sessionstorage-websockets-websqldatabase-webworkers-geolocation-inlinesvg-smil-svg-svgclippaths-touch-webgl-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-hasevent-prefixes-domprefixes-load
  */
 ;
+<<<<<<< HEAD
+=======
+/* window.Modernizr*/
+>>>>>>> 3e79f2ac3d60eff33ae2d5af752a516e8823866f
 window.Modernizr = function(a, b, c) {
     function C(a) {
         j.cssText = a
@@ -252,6 +256,10 @@ window.Modernizr = function(a, b, c) {
         }),
         a
     },
+<<<<<<< HEAD
+=======
+    /*s.generatedcontent*/
+>>>>>>> 3e79f2ac3d60eff33ae2d5af752a516e8823866f
     s.generatedcontent = function() {
         var a;
         return y(["#", h, "{font:0/0 a}#", h, ':after{content:"', l, '";visibility:hidden;font:3px/1 a}'].join(""),
@@ -647,4 +655,8 @@ function(a, b, c) {
 } (this, document),
 Modernizr.load = function() {
     yepnope.apply(window, [].slice.call(arguments, 0))
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 3e79f2ac3d60eff33ae2d5af752a516e8823866f

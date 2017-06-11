@@ -343,3 +343,75 @@ jQuery(function($) {
 	});
 
 });
+/*
+$('.range-slider').each(function() {
+		var $this = $(this),
+			configs = new Array();
+		
+		configs['min'] = ( $this.data('min') === undefined ) ? 0 : $this.data('min');
+		configs['max'] = ( $this.data('max') === undefined ) ? 100 : $this.data('max');
+		configs['start'] = ( $this.data('start') === undefined ) ? [configs['min'], configs['max']] : $this.data('start');
+		configs['step'] = ( $this.data('step') === undefined ) ? 1 : $this.data('step');
+		configs['currency'] = ( $this.data('currency') === undefined ) ? '$' : $this.data('currency');
+		
+		$this.noUiSlider({
+			range: [configs['min'], configs['max']],
+			start: configs['start'],
+			step: configs['step'],
+			connect: true,
+			handles: 2,
+			slide: function() {
+				var values = $(this).val();
+					
+				$this.siblings('.range-slider-value').find('> .min').text( configs['currency'] + values[0] );
+				$this.siblings('.range-slider-value').find('> .max').text( configs['currency'] + values[1] );
+			},
+			serialization: {
+				to: [ 'min-price', 'max-price' ],
+				resolution: 1,
+				mark: ","
+			},
+		}).change(function() { priceSlider( $(this).val() ); });
+		
+		$this.siblings('.range-slider-value').find('> .min').text( configs['currency'] + $this.val()[0] );
+		$this.siblings('.range-slider-value').find('> .max').text( configs['currency'] + $this.val()[1] );
+	});
+
+	$('#filter-by-size li > a, #filter-by-color li > a').on('click', function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		$this.toggleClass('active');
+		$this.siblings('.filter-checkbox').prop( 'checked', $this.hasClass('active') ).trigger('change');
+	});
+	
+	function update_cart_total()
+	{
+		var total = 0,
+			subtotal = 0;
+			
+		$('.tbl-cart .row-total').each(function() {
+			temp = $(this).text();
+			temp = temp.replace( /^\D+/g, '');
+			temp = parseFloat(temp);
+			
+			if ( ! isNaN(temp) )
+			{
+				total += temp;
+			}
+		});
+			
+		$('.tbl-cart .unit-price').each(function() {
+			temp = $(this).text();
+			temp = temp.replace( /^\D+/g, '');
+			temp = parseFloat(temp);
+			
+			if ( ! isNaN(temp) )
+			{
+				subtotal += temp;
+			}
+		});
+		
+		$('.shopcart-total .cart-subtotal > .pull-right').text('$' + subtotal.toFixed(2));
+		$('.shopcart-total .cart-total > .pull-right').text('$' + total.toFixed(2));
+	}
+*/
