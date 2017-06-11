@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html class="noIE" lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<title>We See 即将上映</title>
+	<meta name="description" content=""/>
+	<meta name="keywords" content=""/>
+	<link rel="stylesheet" href="css/minified.css">
+	<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');</script>
+	<script src="js/modernizr.min.js"></script>	
+	<script src="js/signin.js"></script>	
+	<link rel="stylesheet" href="css/jquery.nouislider.css">
+	<link rel="stylesheet" href="css/isotope.css">
+	<link rel="stylesheet" href="css/innerpage.css">
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/signin.css">
+
+</head>
+<body class="products-view">
+<div id="page-wrapper">
+	<div id="LoginBox">
+		<div class="LoginBox_title">
+			WE SEE电影售票系统用户登录<a href="javascript:void(0)" title="关闭窗口" class="close_signin" id="closeBtn">×</a>
+		</div>
+		<div id="login_error_tips">用户名或者密码错误</div>
+		<div class="LoginBox_content">
+			用户名: <span class="inputBox"><input type="text" id="txtName" placeholder="账号/邮箱" /></span>
+			<a href="javascript:void(0)" title="提示" class="warning" id="warn">*</a>
+		</div>
+		<div class="LoginBox_content">
+			密&nbsp;&nbsp;&nbsp;&nbsp;码: <span class="inputBox"><input type="text" id="txtPwd" placeholder="密码" /></span>
+			<a href="javascript:void(0)" title="提示" class="warning" id="warn2">*</a>
+		</div>
+		<div class="LoginBox_content">
+			<a href="#" id="loginbtn">登录</a>
+		</div>
+		<img src="images/demo/register-footer.jpg" />
+	</div>
+
+	<div id="RegisterBox">
+		<div class="RegisterBox_title">
+			WE SEE电影售票系统用户注册<a href="javascript:void(0)" title="关闭窗口" class="close_register" id="closeBtn">×</a>
+		</div>
+		<form method='post'>
+			<div class="RegisterBox_content">
+				用户名&nbsp;&nbsp;&nbsp;: <span class="inputBox"><input type="text" id="register_txtName" placeholder="6~15位英文字母、数字或下划线用户名" required pattern="^[a-zA-z_0-9]{6,15}$" /></span>
+			</div>
+			<div class="RegisterBox_content">
+				密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;: <span class="inputBox"><input type="password" id="register_txtPwd" placeholder="6~18位英文字母、数字或下划线密码" required pattern="^[a-zA-z_0-9]{6,18}$"/></span>
+			</div>
+			<div id="judge_same_password">两次密码不一致</div>
+			<div class="RegisterBox_content">
+				重复密码: <span class="inputBox"><input type="password" id="again_txtPwd" placeholder="再次输入密码" required /></span>
+			</div>
+			<div class="RegisterBox_content">
+				邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;: <span class="inputBox"><input type="text" id="register_email" placeholder="输入电子邮箱，注意邮箱格式" required pattern="^[a-zA-z_0-9]+@(([a-zA-z_0-9])+\.)+[a-zA-z]{2,4}$"/></span>
+			</div>
+			<div class="RegisterBox_content">
+				电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;&nbsp;&nbsp;: <span class="inputBox"><input type="text" id="register_phone" placeholder="11位数字电话号码,不能以0开头" required pattern="^[^0]\d{10}$"/></span>
+			</div>
+			<div class="RegisterBox_content">
+				<input type="submit" id="registerbtn" value="注册">
+			</div>
+		</form>
+		<img src="images/demo/register-footer.jpg" />
+	</div>
+	<header id="site-header" role="banner">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-7">
+						<div class="contact-info">
+							<i class="iconfont-headphones round-icon"></i>
+								<strong>Welcome to WE-SEE movie</strong>
+							</div>
+						<!-- // CONTACT INFO -->
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-5">
+						<ul class="actions unstyled clearfix">
+							<li>
+								<!-- SEARCH BOX -->
+								<div class="search-box">
+									<form action="#" method="post">
+										<div class="input-iconed prepend">
+											<button class="input-icon"><i class="iconfont-search"></i></button>
+											<label for="input-search" class="placeholder">Search here…</label>
+											<input type="text" name="q" id="input-search" class="round-input full-width" required />
+										</div>
+									</form>
+								</div>
+								<!-- // SEARCH BOX -->
+							</li>
+							<li>
+								<a id="Login">
+									<i class="iconfont-user round-icon"></i>
+								登陆
+								</a>
+							</li>
+							<li>
+								<a id="Register">
+									<i class="iconfont-road round-icon"></i>
+								注册
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- ADD TO CART MESSAGE -->
+			<div class="cart-notification">
+				<ul class="unstyled"></ul>
+			</div>
+			<!-- // ADD TO CART MESSAGE -->
+		</div>
+
+		<div class="main-header-wrapper">
+			<div class="container">
+				<div class="main-header">
+					<div class="logo-wrapper">
+						We See
+					</div>
+					<nav id="site-menu" role="navigation">
+						<ul class="main-menu hidden-sm hidden-xs">
+							<li>
+								<a href="index.html">主页</a>
+							</li>
+							<li >
+								<a href="products.html">正在热映</a>
+							</li>
+							<li class="active">
+								<a href="products2.html">即将上映</a>
+							</li>
+							<li>
+								<a href="components.html">个人中心</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+
+		<div class="breadcrumb-container">
+			<div class="container">
+				<div class="relative">
+					<ul class="bc push-up unstyled clearfix">
+						<li><a href="index.html">主页</a></li>
+						<li class="active">即将上映</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<main id="main-content" role="main">
+			<div class="container">
+				<div class="row">
+					<div class="m-t-b clearfix">
+						<aside class="col-xs-12 col-sm-4 col-md-3">
+							<section class="sidebar push-up">
+								<section class="side-section bg-white">
+									<header class="side-section-header">
+										<h3 class="side-section-title">即将上映</h3>
+									</header>
+									<div class="side-section-content">
+										<ul id="category-list" class="vmenu unstyled">
+											<li>
+												<input type="checkbox" id="type" class="prettyCheckable" data-label="类型" data-labelPosition="right" value="type" />
+												<ul>
+													<li><input type="checkbox" id="type-aiqing" class="prettyCheckable" data-label="爱情" data-labelPosition="right" value="type-aiqing" /></li>
+													<li><input type="checkbox" id="type-juqing" class="prettyCheckable" data-label="剧情" data-labelPosition="right" value="type-juqing" /></li>
+													<li><input type="checkbox" id="type-donghua" class="prettyCheckable" data-label="动画" data-labelPosition="right" value="type-donghua" /></li>
+													<li><input type="checkbox" id="type-dongzuo" class="prettyCheckable" data-label="动作" data-labelPosition="right" value="type-dongzuo" /></li>
+													<li><input type="checkbox" id="type-guzhuang" class="prettyCheckable" data-label="古装" data-labelPosition="right" value="type-guzhuang" /></li>
+													<li><input type="checkbox" id="type-kongbu" class="prettyCheckable" data-label="恐怖" data-labelPosition="right" value="type-kongbu" /></li>
+													<li><input type="checkbox" id="type-fangzui" class="prettyCheckable" data-label="犯罪" data-labelPosition="right" value="type-fangzui" /></li>
+													<li><input type="checkbox" id="type-kehuan" class="prettyCheckable" data-label="科幻" data-labelPosition="right" value="type-kehuan" /></li>
+													<li><input type="checkbox" id="type-jiating" class="prettyCheckable" data-label="家庭" data-labelPosition="right" value="type-jiating" /></li>
+													<li><input type="checkbox" id="type-qita" class="prettyCheckable" data-label="其他" data-labelPosition="right" value="type-qita" /></li>
+												</ul>
+											</li>
+											<li>
+												<input type="checkbox" id="country" class="prettyCheckable" data-label="区域" data-labelPosition="right" value="country" />
+												<ul>
+													<li><input type="checkbox" id="country-dalu" class="prettyCheckable" data-label="大陆" data-labelPosition="right" value="country-dalu" /></li>
+													<li><input type="checkbox" id="country-xianggang" class="prettyCheckable" data-label="香港" data-labelPosition="right" value="country-xianggang" /></li>
+													<li><input type="checkbox" id="country-taiwan" class="prettyCheckable" data-label="台湾" data-labelPosition="right" value="country-taiwan" /></li>
+													<li><input type="checkbox" id="country-hangguo" class="prettyCheckable" data-label="韩国" data-labelPosition="right" value="country-hangguo" /></li>
+													<li><input type="checkbox" id="country-riben" class="prettyCheckable" data-label="日本" data-labelPosition="right" value="country-riben" /></li>
+													<li><input type="checkbox" id="country-meiguo" class="prettyCheckable" data-label="美国" data-labelPosition="right" value="country-meiguo" /></li>
+													<li><input type="checkbox" id="country-eluosi" class="prettyCheckable" data-label="俄罗斯" data-labelPosition="right" value="country-eluosi" /></li>
+													<li><input type="checkbox" id="country-yingguo" class="prettyCheckable" data-label="英国" data-labelPosition="right" value="country-yingguo" /></li>
+													<li><input type="checkbox" id="country-yindu" class="prettyCheckable" data-label="印度" data-labelPosition="right" value="country-yindu" /></li>
+													<li><input type="checkbox" id="country-yilang" class="prettyCheckable" data-label="伊朗" data-labelPosition="right" value="country-yilang" /></li>
+													<li><input type="checkbox" id="country-taiguo" class="prettyCheckable" data-label="泰国" data-labelPosition="right" value="country-taiguo" /></li>
+													<li><input type="checkbox" id="country-qita" class="prettyCheckable" data-label="其他" data-labelPosition="right" value="country-qita" /></li>
+												</ul>
+											</li>
+											<li>
+												<input type="checkbox" id="good" class="prettyCheckable" data-label="最热电影" data-labelPosition="right" value="good" />
+											</li>
+											<li>
+												<input type="checkbox" id="best" class="prettyCheckable" data-label="用户好评" data-labelPosition="right" value="best" />
+											</li>
+										</ul>
+									</div>
+								</section>
+
+								<section class="side-section bg-white">
+									<header class="side-section-header">
+										<h3 class="side-section-title">票价</h3>
+									</header>
+									
+									<!-- PRICE RANGE SLIDER -->
+									<div id="filter-by-price" class="side-section-content">
+										<h4 class="side-section-subheader">选择票价范围</h4>
+										<div class="range-slider-container">
+											<div class="range-slider" data-min="0" data-max="100" data-step="10" data-currency="RMB"></div>
+											<div class="range-slider-value clearfix">
+												<span>票价: &ensp;</span>
+												<span class="min"></span>
+												<span class="max"></span>
+											</div>
+										</div>
+									</div>					
+								</section>
+
+								<div class="promo inverse-background promo1">
+									<div class="inner text-center np">
+										<div class="ribbon">
+											<h6 class="nmb">爱乐之城</h6>
+											<h5 class="text-semibold uppercase nmb">评分最高</h5>
+											<div class="space10"></div>
+											<a href="#" class="with-icon prepend-icon"><i class="iconfont-caret-right"></i><span> 选座购票</span></a>
+										</div>
+									</div>
+								</div>
+								
+								<div class="promo inverse-background promo2">
+									<div class="inner text-center np">
+										<div class="ribbon">
+											<h6 class="nmb">摔跤吧爸爸</h6>
+											<h5 class="text-semibold uppercase nmb">搜票最高</h5>
+											<div class="space10"></div>
+											<a href="#" class="with-icon prepend-icon"><i class="iconfont-caret-right"></i><span> 选座购票</span></a>
+										</div>
+									</div>
+								</div>
+							</section>
+						</aside>
+						<!-- // SIDEBAR -->
+						<section class="col-xs-12 col-sm-8 col-md-9">
+							
+							<section class="products-wrapper">
+								<!-- DISPLAY MODE - NUMBER OF ITEMS TO BE DISPLAY - PAGINATION -->
+								<header class="products-header">
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-6 center-xs">
+											<!-- DISPLAY MODE -->
+											<ul class="unstyled inline-li li-m-r-l-sm pull-left">
+												<li><a class="round-icon active" href="#" data-toggle="tooltip" data-layout="grid" data-title="Switch to List Grid Mode"><i class="iconfont-th"></i></a></li>
+											</ul>
+											
+										</div>
+										<div class="space30 visible-xs"></div>
+										<!-- PAGINATION -->
+										<div class="col-xs-12 col-sm-12 col-md-6 center-xs">
+											<ul class="paginator li-m-r-l pull-right">
+												<li><a class="round-icon" href="#" data-toggle="tooltip" data-title="Previous Page"><i class="iconfont-angle-left"></i></a></li>
+												<li><a href="#">1</a></li>
+												<li><a href="#">2</a></li>
+												<li><a href="#">3</a></li>
+												<li><a href="#">4</a></li>
+												<li><a href="#">5</a></li>
+												<li><a class="round-icon" href="#" data-toggle="tooltip" data-title="Next Page"><i class="iconfont-angle-right"></i></a></li>
+											</ul>
+										</div>
+										<!-- // PAGINATION -->
+									</div>
+								</header>
+
+								<div class="products-layout grid m-t-b add-cart" data-product=".product" data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-price > .price">
+									
+									<div class="product" data-product-id="1" data-category="type|type-aiqing|type-juqing|type-kehuan|country-meiguo|country|best" data-price="50">
+										<div class="entry-media">
+											<img data-src="images/poster2/1.jpg" alt="" class="lazyLoad thumb" />
+											<div class="hover">
+												<ul class="icons unstyled">
+													<li>
+														<div class="circle ribbon ribbon-sale">Sale</div>
+													</li>
+													<li>
+														<a href="images/poster2/1.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="entry-main">
+											<h5 class="entry-title">
+												<a href="#">阿凡达2AVATAR2</a>
+											</h5>
+											<div class="entry-price">
+													<a href="#"><strong class="price">影片详情</strong></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="product" data-product-id="2" data-category="type|type-aiqing|type-juqing|type-guzhuang|country-dalu|country|good" data-price="60">
+										<div class="entry-media">
+											<img data-src="images/poster2/2.jpg" alt="" class="lazyLoad thumb" />
+											<div class="hover">
+												<ul class="icons unstyled">
+													<li>
+														<div class="circle ribbon ribbon-new">New</div>
+													</li>
+													<li>
+														<a href="images/poster2/2.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="entry-main">
+											<h5 class="entry-title">
+												<a href="#">捉妖记2 onster Hunt 2</a>
+											</h5>
+											<div class="entry-price">
+												<a href="#"><strong class="price">影片详情</strong></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="product" data-product-id="3" data-category="type|type-guzhuang|type-kehuan|type-juqing|country-dalu|country" data-price="60">
+										<div class="entry-media">
+											<img data-src="images/poster2/3.jpg" alt="" class="lazyLoad thumb" />
+											<div class="hover">
+												<ul class="icons unstyled">
+													<li>
+														<a href="images/poster2/3.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="entry-main">
+											<h5 class="entry-title">
+												<a href="#">西游记女儿国</a>
+											</h5>
+											<div class="entry-price">
+												<a href="#"><strong class="price">影片详情</strong></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="product" data-product-id="4" data-category="type|type-dongzuo|type-kongbu|type-fangzui|country-dalu|country" data-price="60">
+										<div class="entry-media">
+											<img data-src="images/poster2/4.jpg" alt="" class="lazyLoad thumb" />
+											<div class="hover">
+												<ul class="icons unstyled">
+													<li>
+														<a href="images/poster2/4.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="entry-main">
+											<h5 class="entry-title">
+												<a href="#">摸金校尉之九幽将军</a>
+											</h5>
+											<div class="entry-price">
+												<a href="#"><strong class="price">影片详情</strong></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="product" data-product-id="5" data-category="type|type-kehuan|type-donghua|country-xianggang|country|best" data-price="70">
+										<div class="entry-media">
+											<img data-src="images/poster2/5.jpg" alt="" class="lazyLoad thumb" />
+											<div class="hover">
+												<ul class="icons unstyled">
+													<li>
+														<div class="circle ribbon ribbon-sale">Sale</div>
+													</li>
+													<li>
+														<a href="images/poster2/5.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="entry-main">
+											<h5 class="entry-title">
+												<a href="#">阴阳师Onmyoji 2018</a>
+											</h5>
+											<div class="entry-price">
+												<a href="#"><strong class="price">影片详情</strong></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="product" data-product-id="6" data-category="type|type-kehuan|type-dongzuo|country-meiguo|country" data-price="45">
+										<div class="entry-media">
+											<img data-src="images/poster2/6.jpg" alt="" class="lazyLoad thumb" />
+											<div class="hover">
+												<ul class="icons unstyled">
+													<li>
+														<a href="images/poster2/6.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="entry-main">
+											<h5 class="entry-title">
+												<a href="#">星核 Star Core</a>
+											</h5>
+											<div class="entry-price">
+												<a href="#"><strong class="price">影片详情</strong></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="product" data-product-id="7" data-category="type|type-juqing|type-kehuan|country-meiguo|country|best" data-price="55">
+										<div class="entry-media">
+											<img data-src="images/poster2/7.jpg" alt="" class="lazyLoad thumb" />
+											<div class="hover">
+												<ul class="icons unstyled">
+													<li>
+														<div class="circle ribbon ribbon-new">New</div>
+													</li>
+													<li>
+														<a href="images/poster2/7.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="entry-main">
+											<h5 class="entry-title">
+												<a href="#"> 阿修罗 Asura</a>
+											</h5>
+											<div class="entry-price">
+												<a href="#"><strong class="price">影片详情</strong></a>
+											</div>
+										</div>
+									</div>
+									
+									<div class="product" data-product-id="8" data-category="type|type-dongzuo|country-xianggang|country|good" data-price="55">
+										<div class="entry-media">
+											<img data-src="images/poster2/8.jpg" alt="" class="lazyLoad thumb" />
+											<div class="hover">
+												<ul class="icons unstyled">
+													<li>
+														<a href="images/poster2/8.jpg" class="circle" data-toggle="lightbox"><i class="iconfont-search"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="entry-main">
+											<h5 class="entry-title">
+												<a href="#">英伦对决 The Foreigner</a>
+											</h5>
+											<div class="entry-price">
+												<a href="#"><strong class="price">影片详情</strong></a>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+								<!-- // PRODUCT LAYOUT -->
+							</section>
+							
+						</section>
+					</div>
+					
+				</div>
+			</div>
+		</main>
+		<!-- // SITE MAIN CONTENT -->
+		
+		<!-- SITE FOOTER -->
+	<footer class="page-footer">
+		
+		<!-- WIDGET AREA -->
+		<div class="widgets">
+			<div class="section">
+				<div class="container">
+					<div class="row">
+						
+						<div class="col-xs-12 col-sm-12 col-md-3">
+							<section class="widget widget-menu">
+								<h5 class="widget-title">联系我们</h5>
+								<div class="widget-content">
+									<ul class="menu iconed-list unstyled">
+										<li>
+											<span class="list-icon"><i class="round-icon iconfont-map-marker"></i></span>
+											<div class="list-content">Sun Yat-sen University, SYSU</div>
+										</li>
+										<li>
+											<span class="list-icon"><i class="round-icon iconfont-phone"></i></span>
+											<div class="list-content">123-456-789</div>
+										</li>
+										<li>
+											<span class="list-icon"><i class="round-icon iconfont-envelope-alt"></i></span>
+											<div class="list-content">email@themina.com</div>
+										</li>
+									</ul>
+								</div>
+							</section>
+						</div>
+						
+						<div class="col-xs-12 col-sm-12 col-md-6">
+							<section class="widget widget-ads">
+								<div class="widget-content">
+									<div class="center-xs">
+										<div class="ads">
+											<a href="#">
+												<img src="images/demo/images-footer.jpg" alt="" />
+											</a>
+											<div class="ads-caption bottom-right">
+												<a href="#" class="btn btn-default btn-round">
+													<i class="round-icon iconfont-angle-right"></i>
+													<span class="inline-middle">More movie</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+						
+						<div class="col-xs-12 col-sm-12 col-md-3">
+							<section class="widget widget-subscription">
+							<div class="vmid">
+								<span class="uppercase">友情链接</span>
+								<a href="#"><img src="img/visacard.png" alt="" width="40" /></a>
+								<a href="#"><img src="img/mastercard.png" alt="" width="40" /></a>
+								<a href="#"><img src="img/paypal.png" alt="" width="40" /></a>
+							</div>
+							</section>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- // SECOND ROW -->
+			
+		</div>
+		<!-- // WIDGET AREA -->
+		
+		<div class="footer-sub">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<div class="footer-links center-xs clearfix">
+							@We-see movie
+						</div>
+						<div class="space10"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</footer>
+	<!-- // SITE FOOTER -->
+		
+</div>
+<!-- // PAGE WRAPPER -->
+
+<!-- Essential Javascripts -->
+<script src="js/minified.js"></script>
+<!-- // Essential Javascripts -->
+
+	<!-- Particular Page Javascripts -->
+	<script src="js/jquery.nouislider.js"></script>
+	<script src="js/jquery.isotope.min.js"></script>
+	<script src="js/products.js"></script>
+	<!-- // Particular Page Javascripts -->
+</body>
+</html>

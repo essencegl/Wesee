@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+.mask{
+  margin:0;
+  padding:0;
+  border:none;
+  width:100%;
+  height:100%;
+  background:#333;
+  opacity:0.6;
+  z-index:99;
+  position:fixed;
+  top:0;
+  left:0;
+  display:none;
+}
+
+#ChooseBox{
+  position:absolute;
+  left:50%;
+  top:50%;
+  margin-left: -213px;
+  margin-top: -200px;
+  background:white;
+  width:700px;
+  height:650px;
+  border:3px solid #444;
+  border-radius:7px;
+  z-index:100;
+  display:none;
+}
+
+.ChooseBox_title{
+  background:#f7f7f7;
+  padding:0px 20px;
+  line-height:50px;
+  height:50px;
+  font-weight:bold;
+  color:#666;
+  font-size:20px;
+}
+
+.Seat_content{
+  height:80%;
+  width:71%;
+  line-height:77px;
+  padding:0px 30px;
+  font-size:x-large;
+}
+
+.Seat_type{
+  position:absolute;
+  right:10%;
+  top:80px;
+}
+
+.Seat_info{
+  position:absolute;
+  left: 70%;
+  top: 250px;
+  color: black;
+  font-size: 18px
+}
+
+.Seat_title{
+  color: #A52A2A;
+  font-size: 20px;
+}
+.seat_inputBox{
+  width: 10px;
+}
+
+.Screen{
+  border-radius: 6px;
+  background: #00868B;
+  line-height:50px;
+  padding: 0px 10px;
+  font-size:x-large;
+  text-align: center;
+  color: black;
+}
+
+#seat_txtName {
+  width: 150px;
+  border-radius: 0px;
+}
+.num{
+  padding: 0px 6px;
+  font-size:normal;
+  color: black;
+}
+
+.seat{
+  border-radius: 6px;
+  background: #CDCDC1;
+  padding: 3px 12px;
+  font-size:x-large;
+  text-align: center;
+  color: black;
+}
+
+.active{
+  background: #CDCDC1;
+}
+
+.selected{
+  background: #3CB371;
+}
+
+.sold{
+  background: #CD3333;
+}
+
+.seat_icon_info{
+  color: black;
+  font-size: 18px;
+}
+
+.Buyticket{
+  position: absolute;
+  border-radius: 6px;
+  background: #EE5C42;
+  line-height:50px;
+  width:200px;
+  left: 20%;
+  font-size:x-large;
+  text-align: center;
+  color: black;
+}
+
+#buybtn{
+  color: black;
+}
+
