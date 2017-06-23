@@ -1,0 +1,232 @@
+doctype html
+html.noIE(lang='en-US')
+  head
+    meta(charset='UTF-8')
+    title WE See 个人中心
+    meta(name='description', content='we-see')
+    meta(name='keywords', content='movie')
+    link(rel='stylesheet', href='stylesheets/minified.css')
+    link(rel='stylesheet', href='stylesheets/owl.carousel.css')
+    link(rel='stylesheet', href='stylesheets/owl.theme.css')
+    link(rel='stylesheet', href='stylesheets/flexslider.css')
+    link(rel='stylesheet', href='stylesheets/responsive.css')
+    link(rel='stylesheet', href='stylesheets/signin.css')
+    script.
+      window.jQuery || document.write('<script src="javascripts/jquery.min.js"><\\/script>');
+    script(src='javascripts/modernizr.min.js')
+    script(src='javascripts/signin.js')
+  body.home
+    #page-wrapper
+      #LoginBox
+        .LoginBox_title
+          | WE SEE电影售票系统用户登录
+          a#closeBtn.close_signin(href='javascript:void(0)', title='关闭窗口') ×
+        #login_error_tips 用户名或者密码错误
+        .LoginBox_content
+          | 用户名: 
+          span.inputBox
+            input#txtName(type='text', placeholder='账号/邮箱')
+          a#warn.warning(href='javascript:void(0)', title='提示') *
+        .LoginBox_content
+          | 密    码: 
+          span.inputBox
+            input#txtPwd(type='password', placeholder='密码')
+          a#warn2.warning(href='javascript:void(0)', title='提示') *
+        .LoginBox_content
+          a#loginbtn(href='#') 登录
+        img(src='images/demo/register-footer.jpg')
+      #RegisterBox
+        .RegisterBox_title
+          | WE SEE电影售票系统用户注册
+          a#closeBtn.close_register(href='javascript:void(0)', title='关闭窗口') ×
+        #register_error_tips 重复注册
+        form()
+          .RegisterBox_content
+            | 用户名   : 
+            span.inputBox
+              input#register_txtName(type='text', placeholder='6~15位英文字母、数字或下划线用户名', required='', pattern='^[a-zA-z_0-9]{6,15}$')
+          .RegisterBox_content
+            | 密    码   : 
+            span.inputBox
+              input#register_txtPwd(type='password', placeholder='6~18位英文字母、数字或下划线密码', required='', pattern='^[a-zA-z_0-9]{6,18}$')
+          #judge_same_password 两次密码不一致
+          .RegisterBox_content
+            | 重复密码: 
+            span.inputBox
+              input#again_txtPwd(type='password', placeholder='再次输入密码', required='')
+          .RegisterBox_content
+            | 邮    箱   : 
+            span.inputBox
+              input#register_email(type='text', placeholder='输入电子邮箱，注意邮箱格式', required='', pattern='^[a-zA-z_0-9]+@(([a-zA-z_0-9])+\\.)+[a-zA-z]{2,4}$')
+          .RegisterBox_content
+            | 电    话   : 
+            span.inputBox
+              input#register_phone(type='text', placeholder='11位数字电话号码,不能以0开头', required='', pattern='^[^0]\\d{10}$')
+          .RegisterBox_content
+            input#registerbtn(type='submit', value='注册')
+        img(src='images/demo/register-footer.jpg')
+      header#site-header(role='banner')
+        .header-top
+          .container
+            .row
+              .col-xs-12.col-sm-6.col-md-7
+                .contact-info
+                  i.iconfont-film.round-icon
+                  strong Welcome to WE-SEE movie
+              .col-xs-12.col-sm-6.col-md-5
+                ul.actions.unstyled.clearfix
+                  li
+                    .search-box
+                      form(action='#', method='post')
+                        .input-iconed.prepend
+                          button.input-icon
+                            i.iconfont-search
+                          label.placeholder(for='input-search') Search here…
+                          input#input-search.round-input.full-width(type='text', name='q', required='')
+                  li
+                    a#Login
+                      i.iconfont-user.round-icon
+                      span #{session_username}
+                  li
+                    a#Register
+                      i.iconfont-road.round-icon
+                      span 注册
+          .cart-notification
+            ul.unstyled
+        .main-header-wrapper
+          .container
+            .main-header
+              .logo-wrapper
+                img(src='img/logo.png', style="height:70px")
+              nav#site-menu(role='navigation')
+                ul.main-menu.hidden-sm.hidden-xs
+                  li
+                    a(href='http://localhost:3000/home') 主页
+                  li
+                    a(href='http://localhost:3000/now_show_page') 正在热映
+                  li
+                    a(href='http://localhost:3000/later_show_page') 即将上映
+                  li.active
+                    a(href='http://localhost:3000/personal_center') 个人中心
+      // // BREADCRUMB
+      // SITE MAIN CONTENT
+      main#main-content(role='main')
+        .container
+          .row
+            // // SIDEBAR
+            section.col-xs-12.col-sm-8.col-md-9
+              // TYPOGRAPHY
+              section#ui-typography.section
+                ul.menu.iconed-list.unstyled.clearfix
+                  li
+                    span.list-icon
+                      i.round-icon.text-sm.iconfont-user
+                    .list-content 用户名：#{username}
+                  li
+                    span.list-icon
+                      i.round-icon.text-sm.iconfont-phone
+                    .list-content 电话：#{phone}
+                  li
+                    span.list-icon
+                      i.round-icon.text-sm.iconfont-envelope-alt
+                    .list-content 邮箱：#{email}
+              // // TYPOGRAPHY
+              // BUTTONS
+              section#ui-buttons.section
+                ul.nav.nav-tabs
+                  li.active
+                    a(href='#tab-1', data-toggle='tab') 订单票据1
+                  li
+                    a(href='#tab-2', data-toggle='tab') 订单票据2
+                  li
+                    a(href='#tab-3', data-toggle='tab') 订单票据3
+                .tab-content
+                  #tab-1.tab-pane.fade.in.active
+                    table
+                      tr
+                        th 订单编号 : 
+                        th #{order_data.order_id}
+                      tr
+                        th 订单日期 :
+                        th #{order_data.date}
+                      tr
+                        th 下单用户 :
+                        th #{order_data.order_username}
+                      tr
+                        th 电影名称 :
+                        th #{order_data.movie_title}
+                      tr
+                        th 电影单价 :
+                        th #{order_data.movie_price}
+                      tr
+                        th 电影影厅 :
+                        th #{order_data.hall}
+                      tr
+                        th 选择观影时间 :
+                        th #{order_data.showtime}
+                      tr
+                        th 票数 :
+                        th #{order_data.seat_number}
+                      tr
+                        th 座位 :
+                        th #{order_data.seat_position}
+                  #tab-2.tab-pane.fade
+                    p 订单票据2
+                  #tab-3.tab-pane.fade
+                    p 订单票据3
+                .space40
+                .clearfix
+      // // SITE MAIN CONTENT
+      // SITE FOOTER
+      footer.page-footer
+        // WIDGET AREA
+        .widgets
+          .section
+            .container
+              .row
+                .col-xs-12.col-sm-12.col-md-3
+                  section.widget.widget-menu
+                    h5.widget-title 联系我们
+                    .widget-content
+                      ul.menu.iconed-list.unstyled
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-map-marker
+                          .list-content Sun Yat-sen University, SYSU
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-phone
+                          .list-content 123-456-789
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-envelope-alt
+                          .list-content email@themina.com
+                .col-xs-12.col-sm-12.col-md-6
+                  section.widget.widget-ads
+                    .widget-content
+                      .center-xs
+                        .ads
+                          a(href='#')
+                            img(src='images/demo/images-footer.jpg', alt='')
+                          .ads-caption.bottom-right
+                            a.btn.btn-default.btn-round(href='#')
+                              i.round-icon.iconfont-angle-right
+                              span.inline-middle More movie
+                .col-xs-12.col-sm-12.col-md-3
+                  section.widget.widget-subscription
+                    .vmid
+                      span.uppercase 友情链接
+                      a(href='#')
+                        img(src='img/visacard.png', alt='', width='40')
+                      a(href='#')
+                        img(src='img/mastercard.png', alt='', width='40')
+                      a(href='#')
+                        img(src='img/paypal.png', alt='', width='40')
+        .footer-sub
+          .container
+            .row
+              .col-xs-12.col-sm-6
+                .footer-links.center-xs.clearfix
+                  | @We-see movie
+                .space10
+    script(src='javascripts/minified.js')

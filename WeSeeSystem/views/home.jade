@@ -1,0 +1,521 @@
+doctype html
+html.noIE(lang='en-US')
+  head
+    meta(charset='UTF-8')
+    title WE See 电影
+    meta(name='description', content='we-see')
+    meta(name='keywords', content='movie')
+    link(rel='stylesheet', href='stylesheets/minified.css')
+    link(rel='stylesheet', href='stylesheets/owl.carousel.css')
+    link(rel='stylesheet', href='stylesheets/owl.theme.css')
+    link(rel='stylesheet', href='stylesheets/flexslider.css')
+    link(rel='stylesheet', href='stylesheets/responsive.css')
+    link(rel='stylesheet', href='stylesheets/signin.css')
+    script.
+      window.jQuery || document.write('<script src="javascripts/jquery.min.js"><\\/script>');
+    script(src='javascripts/modernizr.min.js')
+    script(src='javascripts/signin.js')
+  body.home
+    #page-wrapper
+      #LoginBox
+        .LoginBox_title
+          | WE SEE电影售票系统用户登录
+          a#closeBtn.close_signin(href='javascript:void(0)', title='关闭窗口') ×
+        #login_error_tips 用户名或者密码错误
+        .LoginBox_content
+          | 用户名: 
+          span.inputBox
+            input#txtName(type='text', placeholder='账号/邮箱')
+          a#warn.warning(href='javascript:void(0)', title='提示') *
+        .LoginBox_content
+          | 密    码: 
+          span.inputBox
+            input#txtPwd(type='password', placeholder='密码')
+          a#warn2.warning(href='javascript:void(0)', title='提示') *
+        .LoginBox_content
+          a#loginbtn(href='#') 登录
+        img(src='images/demo/register-footer.jpg')
+      #RegisterBox
+        .RegisterBox_title
+          | WE SEE电影售票系统用户注册
+          a#closeBtn.close_register(href='javascript:void(0)', title='关闭窗口') ×
+        #register_error_tips 用户名/邮箱/电话出错
+        form(method='post', action='regist')
+          .RegisterBox_content
+            | 用户名   : 
+            span.inputBox
+              input#register_txtName(type='text', placeholder='6~15位英文字母、数字或下划线用户名', required='', pattern='^[a-zA-z_0-9]{6,15}$')
+          .RegisterBox_content
+            | 密    码   : 
+            span.inputBox
+              input#register_txtPwd(type='password', placeholder='6~18位英文字母、数字或下划线密码', required='', pattern='^[a-zA-z_0-9]{6,18}$')
+          #judge_same_password 两次密码不一致
+          .RegisterBox_content
+            | 重复密码: 
+            span.inputBox
+              input#again_txtPwd(type='password', placeholder='再次输入密码', required='')
+          .RegisterBox_content
+            | 邮    箱   : 
+            span.inputBox
+              input#register_email(type='text', placeholder='输入电子邮箱，注意邮箱格式', required='', pattern='^[a-zA-z_0-9]+@(([a-zA-z_0-9])+\\.)+[a-zA-z]{2,4}$')
+          .RegisterBox_content
+            | 电    话   : 
+            span.inputBox
+              input#register_phone(type='text', placeholder='11位数字电话号码,不能以0开头', required='', pattern='^[^0]\\d{10}$')
+          .RegisterBox_content
+            input#registerbtn(type='submit', value='注册')
+        img(src='images/demo/register-footer.jpg')
+      header#site-header(role='banner')
+        .header-top
+          .container
+            .row
+              .col-xs-12.col-sm-6.col-md-7
+                .contact-info
+                  i.iconfont-film.round-icon
+                  strong Welcome to WE-SEE movie
+              .col-xs-12.col-sm-6.col-md-5
+                ul.actions.unstyled.clearfix
+                  li
+                    .search-box
+                      form(action='#', method='post')
+                        .input-iconed.prepend
+                          button.input-icon
+                            i.iconfont-search
+                          label.placeholder(for='input-search') Search here…
+                          input#input-search.round-input.full-width(type='text', name='q', required='')
+                  li
+                    a#Login
+                      i.iconfont-user.round-icon
+                      span #{session_username}
+                  li
+                    a#Register
+                      i.iconfont-road.round-icon
+                      span 注册
+          .cart-notification
+            ul.unstyled
+        .main-header-wrapper
+          .container
+            .main-header
+              .logo-wrapper
+                img(src='img/logo.png', style="height:70px")
+              nav#site-menu(role='navigation')
+                ul.main-menu.hidden-sm.hidden-xs
+                  li.active
+                    a(href='http://localhost:3000/home') 主页
+                  li
+                    a(href='http://localhost:3000/now_show_page') 正在热映
+                  li
+                    a(href='http://localhost:3000/later_show_page') 即将上映
+                  li
+                    a(href='http://localhost:3000/personal_center') 个人中心
+      #home-slider
+        .flexslider
+          ul.slides
+            li
+              img(src='img/slides/3.jpg')
+            li
+              img(src='img/slides/1.jpg')
+            li
+              img(src='img/slides/2.jpg')
+        script.
+          jQuery(function($) {
+          var $slider = $('#home-slider > .flexslider');
+          $slider.find('.flex-caption').each(function() {
+          var $this = $(this);
+          var configs = {
+          left: $this.data('x'),
+          top: $this.data('y'),
+          speed: $this.data('speed') + 'ms',
+          delay: $this.data('start') + 'ms'
+          };
+          if ( configs.left == 'center' && $this.width() !== 0 )
+          {
+          configs.left = ( $slider.width() - $this.width() ) / 2;
+          }
+          if ( configs.top == 'center' && $this.height() !== 0 )
+          {
+          configs.top = ( $slider.height() - $this.height() ) / 2;
+          }
+          $this.data('positions', configs);
+          $this.css({
+          'left': configs.left + 'px',
+          'top': configs.top + 'px',
+          'animation-duration': configs.speed,
+          'animation-delay': configs.delay
+          });
+          });
+          $(window).on('resize', function() {
+          var wW = $(window).width(),
+          zoom = ( wW >= 1170 ) ? 1 : wW / 1349;
+          $('.flex-caption.gfc').css('zoom', zoom);
+          });
+          $(window).trigger('resize');
+          $slider.imagesLoaded(function() {
+          $slider.flexslider({
+          animation: 'slide',
+          easing: 'easeInQuad',
+          slideshow: false,
+          nextText: '<i class="iconfont-angle-right"></i>',
+          prevText: '<i class="iconfont-angle-left"></i>',
+          start: function() {
+          flex_fix_pos(1);
+          },
+          before: function(slider) {
+          // initial caption animation for next show
+          $slider.find('.slides li .animation-done').each(function() {
+          $(this).removeClass('animation-done');
+          var animation = $(this).attr('data-animation');
+          $(this).removeClass(animation);
+          });
+          flex_fix_pos(slider.animatingTo + 1);
+          },
+          after: function() {
+          // run caption animation
+          $slider.find('.flex-active-slide .animated').each(function() {
+          var animation = $(this).attr('data-animation');
+          $(this).addClass('animation-done').addClass(animation);
+          });
+          }
+          });
+          });
+          function flex_fix_pos(i) {
+          $slider.find('.slides > li:eq(' + i + ') .gfc').each(function() {
+          var $this = $(this),
+          pos = $(this).data('positions');
+          if ( pos.left == 'center' )
+          {
+          pos.left = ( $slider.width() - $this.width() ) / 2;
+          $this.css('left', pos.left + 'px');
+          $this.data('positions', pos);
+          }
+          if ( pos.top == 'center' )
+          {
+          pos.top = ( $slider.height() - $this.height() ) / 2;
+          $this.css('left', pos.top + 'px');
+          $this.data('positions', pos);
+          }
+          });
+          }
+          });
+      main#main-content(role='main')
+        section.section.featured.visible-items-4
+          .container
+            .row
+              header.section-header.clearfix.col-sm-6
+                h3.section-title 正在热映
+              .clearfix
+              #new-arrivals-products.add-cart(data-product='.product', data-thumbnail='.entry-media .thumb', data-title='.entry-title > a', data-url='.entry-title > a', data-price='.entry-price > .price')
+                .owl-controls.clickable.outside
+                  .owl-buttons
+                    .owl-prev
+                      i.iconfont-angle-left
+                    .owl-next
+                      i.iconfont-angle-right
+                .owl-carousel.owl-theme(data-visible-items='4', data-navigation='true', data-lazyload='true')
+                  .product(data-product-id='1')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster/1.jpg', alt='')
+                      .hover
+                        a.entry-url(href='http://localhost:3000/movie_detail_1')
+                        ul.icons.unstyled
+                          li
+                            .circle.ribbon.ribbon-sale Sale
+                          li
+                            a.circle(href='images/poster/1.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='http://localhost:3000/movie_detail_1') 爱乐之城La La Land
+                      .entry-links.clearfix
+                        a.pull-left.m-r(href='http://localhost:3000/movie_detail_1') 影片详情
+                        a.pull-right(href='#') 选座购票
+                  .product(data-product-id='2')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster/2.jpg', alt='')
+                      .hover
+                        a.entry-url(href='http://localhost:3000/movie_detail_2')
+                        ul.icons.unstyled
+                          li
+                            .circle.ribbon.ribbon-new New
+                          li
+                            a.circle(href='images/poster/2.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='http://localhost:3000/movie_detail_2') 变形金刚5最后的骑士
+                      .entry-links.clearfix
+                        a.pull-left.m-r(href='http://localhost:3000/movie_detail_2') 影片详情
+                        a.pull-right(href='#') 选座购票
+                  .product(data-product-id='3')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster/3.jpg', alt='')
+                      .hover
+                        a.entry-url(href='http://localhost:3000/movie_detail_3')
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster/3.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='http://localhost:3000/movie_detail_3') 攻壳机动队Ghost Shell
+                      .entry-links.clearfix
+                        a.pull-left.m-r(href='http://localhost:3000/movie_detail_3') 影片详情
+                        a.pull-right(href='#') 选座购票
+                  .product(data-product-id='4')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster/4.jpg', alt='')
+                      .hover
+                        a.entry-url(href='http://localhost:3000/movie_detail_1')
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster/4.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 加勒比海盗5：死无对证
+                      .entry-links.clearfix
+                        a.pull-left.m-r(href='#') 影片详情
+                        a.pull-right(href='#') 选座购票
+                  .product(data-product-id='5')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster/5.jpg', alt='')
+                      .hover
+                        a.entry-url(href='http://localhost:3000/movie_detail_1')
+                        ul.icons.unstyled
+                          li
+                            .circle.ribbon.ribbon-sale Sale
+                          li
+                            a.circle(href='images/poster/5.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 金刚狼3：殊死一战
+                      .entry-links.clearfix
+                        a.pull-left.m-r(href='#') 影片详情
+                        a.pull-right(href='#') 选座购票
+                  .product(data-product-id='6')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster/6.jpg', alt='')
+                      .hover
+                        a.entry-url(href='http://localhost:3000/movie_detail_1')
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster/6.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 神奇女侠Wonder Woman
+                      .entry-links.clearfix
+                        a.pull-left.m-r(href='#') 影片详情
+                        a.pull-right(href='#') 选座购票
+                  .product(data-product-id='7')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster/7.jpg', alt='')
+                      .hover
+                        a.entry-url(href='http://localhost:3000/movie_detail_1')
+                        ul.icons.unstyled
+                          li
+                            .circle.ribbon.ribbon-new New
+                          li
+                            a.circle(href='images/poster/7.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 摔跤吧！爸爸
+                      .entry-links.clearfix
+                        a.pull-left.m-r(href='#') 影片详情
+                        a.pull-right(href='#') 选座购票
+                  .product(data-product-id='8')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster/8.jpg', alt='')
+                      .hover
+                        a.entry-url(href='http://localhost:3000/movie_detail_1')
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster/8.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 速度与激情8
+                      .entry-links.clearfix
+                        a.pull-left.m-r(href='#') 影片详情
+                        a.pull-right(href='#') 选座购票
+        section.section.new-arrivals.visible-items-5
+          .container
+            .row
+              header.section-header.clearfix.col-sm-6
+                h3.section-title 即将上映
+              .clearfix
+              #new-arrivals-products.add-cart(data-product='.product', data-thumbnail='.entry-media .thumb', data-title='.entry-title > a', data-url='.entry-title > a', data-price='.entry-price > .price')
+                .owl-controls.clickable.outside
+                  .owl-buttons
+                    .owl-prev
+                      i.iconfont-angle-left
+                    .owl-next
+                      i.iconfont-angle-right
+                .owl-carousel.owl-theme(data-visible-items='5', data-navigation='true', data-lazyload='true')
+                  .product(data-product-id='9')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster2/1.jpg', alt='')
+                      .hover
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster2/1.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 阿凡达2AVATAR2
+                      .entry-price
+                        a(href='#')
+                          strong.price 影片详情
+                  .product(data-product-id='10')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster2/2.jpg', alt='')
+                      .hover
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster2/2.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 捉妖记2 onster Hunt 2
+                      .entry-price
+                        a(href='#')
+                          strong.price 影片详情
+                  .product(data-product-id='11')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster2/3.jpg', alt='')
+                      .hover
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster2/3.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 西游记女儿国
+                      .entry-price
+                        a(href='#')
+                          strong.price 影片详情
+                  .product(data-product-id='12')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster2/4.jpg', alt='')
+                      .hover
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster2/4.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 摸金校尉之九幽将军
+                      .entry-price
+                        a(href='#')
+                          strong.price 影片详情
+                  .product(data-product-id='13')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster2/5.jpg', alt='')
+                      .hover
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster2/5.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 阴阳师Onmyoji 2018
+                      .entry-price
+                        a(href='#')
+                          strong.price 影片详情
+                  .product(data-product-id='14')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster2/6.jpg', alt='')
+                      .hover
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster2/6.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 星核 Star Core
+                      .entry-price
+                        a(href='#')
+                          strong.price 影片详情
+                  .product(data-product-id='15')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster2/7.jpg', alt='')
+                      .hover
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster2/7.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#')  阿修罗 Asura
+                      .entry-price
+                        a(href='#')
+                          strong.price 影片详情
+                  .product(data-product-id='16')
+                    .entry-media
+                      img.lazyOwl.thumb(data-src='images/poster2/8.jpg', alt='')
+                      .hover
+                        ul.icons.unstyled
+                          li
+                            a.circle(href='images/poster2/8.jpg', data-toggle='lightbox')
+                              i.iconfont-search
+                    .entry-main
+                      h5.entry-title
+                        a(href='#') 英伦对决 The Foreigner
+                      .entry-price
+                        a(href='#')
+                          strong.price 影片详情
+      footer.page-footer
+        .widgets
+          .section
+            .container
+              .row
+                .col-xs-12.col-sm-12.col-md-3
+                  section.widget.widget-menu
+                    h5.widget-title 联系我们
+                    .widget-content
+                      ul.menu.iconed-list.unstyled
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-map-marker
+                          .list-content Sun Yat-sen University, SYSU
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-phone
+                          .list-content 123-456-789
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-envelope-alt
+                          .list-content email@themina.com
+                .col-xs-12.col-sm-12.col-md-6
+                  section.widget.widget-ads
+                    .widget-content
+                      .center-xs
+                        .ads
+                          a(href='#')
+                            img(src='images/demo/images-footer.jpg', alt='')
+                          .ads-caption.bottom-right
+                            a.btn.btn-default.btn-round(href='#')
+                              i.round-icon.iconfont-angle-right
+                              span.inline-middle More movie
+                .col-xs-12.col-sm-12.col-md-3
+                  section.widget.widget-subscription
+                    .vmid
+                      span.uppercase 友情链接
+                      a(href='#')
+                        img(src='img/visacard.png', alt='', width='40')
+                      a(href='#')
+                        img(src='img/mastercard.png', alt='', width='40')
+                      a(href='#')
+                        img(src='img/paypal.png', alt='', width='40')
+        .footer-sub
+          .container
+            .row
+              .col-xs-12.col-sm-6
+                .footer-links.center-xs.clearfix
+                  | @We-see movie
+                .space10
+    script(src='javascripts/minified.js')
+    script(src='javascripts/owl.carousel.js')
+    script(src='javascripts/jquery.flexslider-min.js')

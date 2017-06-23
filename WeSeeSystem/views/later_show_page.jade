@@ -1,0 +1,431 @@
+doctype html
+html.noIE(lang='en-US')
+  head
+    meta(charset='UTF-8')
+    title We See 即将上映
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    link(rel='stylesheet', href='stylesheets/minified.css')
+    script.
+      window.jQuery || document.write('<script src="javascripts/jquery.min.js"><\\/script>');
+    script(src='javascripts/modernizr.min.js')
+    script(src='javascripts/signin.js')
+    link(rel='stylesheet', href='stylesheets/jquery.nouislider.css')
+    link(rel='stylesheet', href='stylesheets/isotope.css')
+    link(rel='stylesheet', href='stylesheets/innerpage.css')
+    link(rel='stylesheet', href='stylesheets/responsive.css')
+    link(rel='stylesheet', href='stylesheets/signin.css')
+  body.products-view
+    #page-wrapper
+      #LoginBox
+        .LoginBox_title
+          | WE SEE电影售票系统用户登录
+          a#closeBtn.close_signin(href='javascript:void(0)', title='关闭窗口') ×
+        #login_error_tips 用户名或者密码错误
+        .LoginBox_content
+          | 用户名: 
+          span.inputBox
+            input#txtName(type='text', placeholder='账号/邮箱')
+          a#warn.warning(href='javascript:void(0)', title='提示') *
+        .LoginBox_content
+          | 密    码: 
+          span.inputBox
+            input#txtPwd(type='password', placeholder='密码')
+          a#warn2.warning(href='javascript:void(0)', title='提示') *
+        .LoginBox_content
+          a#loginbtn(href='#') 登录
+        img(src='images/demo/register-footer.jpg')
+      #RegisterBox
+        .RegisterBox_title
+          | WE SEE电影售票系统用户注册
+          a#closeBtn.close_register(href='javascript:void(0)', title='关闭窗口') ×
+        #register_error_tips 重复注册
+        form()
+          .RegisterBox_content
+            | 用户名   : 
+            span.inputBox
+              input#register_txtName(type='text', placeholder='6~15位英文字母、数字或下划线用户名', required='', pattern='^[a-zA-z_0-9]{6,15}$')
+          .RegisterBox_content
+            | 密    码   : 
+            span.inputBox
+              input#register_txtPwd(type='password', placeholder='6~18位英文字母、数字或下划线密码', required='', pattern='^[a-zA-z_0-9]{6,18}$')
+          #judge_same_password 两次密码不一致
+          .RegisterBox_content
+            | 重复密码: 
+            span.inputBox
+              input#again_txtPwd(type='password', placeholder='再次输入密码', required='')
+          .RegisterBox_content
+            | 邮    箱   : 
+            span.inputBox
+              input#register_email(type='text', placeholder='输入电子邮箱，注意邮箱格式', required='', pattern='^[a-zA-z_0-9]+@(([a-zA-z_0-9])+\\.)+[a-zA-z]{2,4}$')
+          .RegisterBox_content
+            | 电    话   : 
+            span.inputBox
+              input#register_phone(type='text', placeholder='11位数字电话号码,不能以0开头', required='', pattern='^[^0]\\d{10}$')
+          .RegisterBox_content
+            input#registerbtn(type='submit', value='注册')
+        img(src='images/demo/register-footer.jpg')
+      header#site-header(role='banner')
+        .header-top
+          .container
+            .row
+              .col-xs-12.col-sm-6.col-md-7
+                .contact-info
+                  i.iconfont-headphones.round-icon
+                  strong Welcome to WE-SEE movie
+                // // CONTACT INFO
+              .col-xs-12.col-sm-6.col-md-5
+                ul.actions.unstyled.clearfix
+                  li
+                    // SEARCH BOX
+                    .search-box
+                      form(action='#', method='post')
+                        .input-iconed.prepend
+                          button.input-icon
+                            i.iconfont-search
+                          label.placeholder(for='input-search') Search here…
+                          input#input-search.round-input.full-width(type='text', name='q', required='')
+                    // // SEARCH BOX
+                  li
+                    a#Login
+                      i.iconfont-user.round-icon
+                      span #{session_username}
+                  li
+                    a#Register
+                      i.iconfont-road.round-icon
+                      span 注册
+          // ADD TO CART MESSAGE
+          .cart-notification
+            ul.unstyled
+          // // ADD TO CART MESSAGE
+        .main-header-wrapper
+          .container
+            .main-header
+              .logo-wrapper
+                img(src='img/logo.png', style="height:70px")
+              nav#site-menu(role='navigation')
+                ul.main-menu.hidden-sm.hidden-xs
+                  li
+                    a(href='http://localhost:3000/home') 主页
+                  li
+                    a(href='http://localhost:3000/now_show_page') 正在热映
+                  li.active
+                    a(href='http://localhost:3000/later_show_page') 即将上映
+                  li
+                    a(href='http://localhost:3000/personal_center') 个人中心
+      .breadcrumb-container
+        .container
+          .relative
+            ul.bc.push-up.unstyled.clearfix
+              li
+                a(href='index.html') 主页
+              li.active 即将上映
+      main#main-content(role='main')
+        .container
+          .row
+            .m-t-b.clearfix
+              aside.col-xs-12.col-sm-4.col-md-3
+                section.sidebar.push-up
+                  section.side-section.bg-white
+                    header.side-section-header
+                      h3.side-section-title 即将上映
+                    .side-section-content
+                      ul#category-list.vmenu.unstyled
+                        li
+                          input#type.prettyCheckable(type='checkbox', data-label='类型', data-labelposition='right', value='type')
+                          ul
+                            li
+                              input#type-aiqing.prettyCheckable(type='checkbox', data-label='爱情', data-labelposition='right', value='type-aiqing')
+                            li
+                              input#type-juqing.prettyCheckable(type='checkbox', data-label='剧情', data-labelposition='right', value='type-juqing')
+                            li
+                              input#type-donghua.prettyCheckable(type='checkbox', data-label='动画', data-labelposition='right', value='type-donghua')
+                            li
+                              input#type-dongzuo.prettyCheckable(type='checkbox', data-label='动作', data-labelposition='right', value='type-dongzuo')
+                            li
+                              input#type-guzhuang.prettyCheckable(type='checkbox', data-label='古装', data-labelposition='right', value='type-guzhuang')
+                            li
+                              input#type-kongbu.prettyCheckable(type='checkbox', data-label='恐怖', data-labelposition='right', value='type-kongbu')
+                            li
+                              input#type-fangzui.prettyCheckable(type='checkbox', data-label='犯罪', data-labelposition='right', value='type-fangzui')
+                            li
+                              input#type-kehuan.prettyCheckable(type='checkbox', data-label='科幻', data-labelposition='right', value='type-kehuan')
+                            li
+                              input#type-jiating.prettyCheckable(type='checkbox', data-label='家庭', data-labelposition='right', value='type-jiating')
+                            li
+                              input#type-qita.prettyCheckable(type='checkbox', data-label='其他', data-labelposition='right', value='type-qita')
+                        li
+                          input#country.prettyCheckable(type='checkbox', data-label='区域', data-labelposition='right', value='country')
+                          ul
+                            li
+                              input#country-dalu.prettyCheckable(type='checkbox', data-label='大陆', data-labelposition='right', value='country-dalu')
+                            li
+                              input#country-xianggang.prettyCheckable(type='checkbox', data-label='香港', data-labelposition='right', value='country-xianggang')
+                            li
+                              input#country-taiwan.prettyCheckable(type='checkbox', data-label='台湾', data-labelposition='right', value='country-taiwan')
+                            li
+                              input#country-hangguo.prettyCheckable(type='checkbox', data-label='韩国', data-labelposition='right', value='country-hangguo')
+                            li
+                              input#country-riben.prettyCheckable(type='checkbox', data-label='日本', data-labelposition='right', value='country-riben')
+                            li
+                              input#country-meiguo.prettyCheckable(type='checkbox', data-label='美国', data-labelposition='right', value='country-meiguo')
+                            li
+                              input#country-eluosi.prettyCheckable(type='checkbox', data-label='俄罗斯', data-labelposition='right', value='country-eluosi')
+                            li
+                              input#country-yingguo.prettyCheckable(type='checkbox', data-label='英国', data-labelposition='right', value='country-yingguo')
+                            li
+                              input#country-yindu.prettyCheckable(type='checkbox', data-label='印度', data-labelposition='right', value='country-yindu')
+                            li
+                              input#country-yilang.prettyCheckable(type='checkbox', data-label='伊朗', data-labelposition='right', value='country-yilang')
+                            li
+                              input#country-taiguo.prettyCheckable(type='checkbox', data-label='泰国', data-labelposition='right', value='country-taiguo')
+                            li
+                              input#country-qita.prettyCheckable(type='checkbox', data-label='其他', data-labelposition='right', value='country-qita')
+                        li
+                          input#good.prettyCheckable(type='checkbox', data-label='最热电影', data-labelposition='right', value='good')
+                        li
+                          input#best.prettyCheckable(type='checkbox', data-label='用户好评', data-labelposition='right', value='best')
+                  section.side-section.bg-white
+                    header.side-section-header
+                      h3.side-section-title 票价
+                    // PRICE RANGE SLIDER
+                    #filter-by-price.side-section-content
+                      h4.side-section-subheader 选择票价范围
+                      .range-slider-container
+                        .range-slider(data-min='0', data-max='100', data-step='10', data-currency='RMB')
+                        .range-slider-value.clearfix
+                          span 票价:  
+                          span.min
+                          span.max
+                  .promo.inverse-background.promo1
+                    .inner.text-center.np
+                      .ribbon
+                        h6.nmb 爱乐之城
+                        h5.text-semibold.uppercase.nmb 评分最高
+                        .space10
+                        a.with-icon.prepend-icon(href='#')
+                          i.iconfont-caret-right
+                          span  选座购票
+                  .promo.inverse-background.promo2
+                    .inner.text-center.np
+                      .ribbon
+                        h6.nmb 摔跤吧爸爸
+                        h5.text-semibold.uppercase.nmb 搜票最高
+                        .space10
+                        a.with-icon.prepend-icon(href='#')
+                          i.iconfont-caret-right
+                          span  选座购票
+              // // SIDEBAR
+              section.col-xs-12.col-sm-8.col-md-9
+                section.products-wrapper
+                  // DISPLAY MODE - NUMBER OF ITEMS TO BE DISPLAY - PAGINATION
+                  header.products-header
+                    .row
+                      .col-xs-12.col-sm-12.col-md-6.center-xs
+                        // DISPLAY MODE
+                        ul.unstyled.inline-li.li-m-r-l-sm.pull-left
+                          li
+                            a.round-icon.active(href='#', data-toggle='tooltip', data-layout='grid', data-title='Switch to List Grid Mode')
+                              i.iconfont-th
+                      .space30.visible-xs
+                      // PAGINATION
+                      .col-xs-12.col-sm-12.col-md-6.center-xs
+                        ul.paginator.li-m-r-l.pull-right
+                          li
+                            a.round-icon(href='#', data-toggle='tooltip', data-title='Previous Page')
+                              i.iconfont-angle-left
+                          li
+                            a(href='#') 1
+                          li
+                            a(href='#') 2
+                          li
+                            a(href='#') 3
+                          li
+                            a(href='#') 4
+                          li
+                            a(href='#') 5
+                          li
+                            a.round-icon(href='#', data-toggle='tooltip', data-title='Next Page')
+                              i.iconfont-angle-right
+                      // // PAGINATION
+                  .products-layout.grid.m-t-b.add-cart(data-product='.product', data-thumbnail='.entry-media .thumb', data-title='.entry-title > a', data-url='.entry-title > a', data-price='.entry-price > .price')
+                    .product(data-product-id='1', data-category='type|type-aiqing|type-juqing|type-kehuan|country-meiguo|country|best', data-price='50')
+                      .entry-media
+                        img.lazyLoad.thumb(data-src='images/poster2/1.jpg', alt='')
+                        .hover
+                          ul.icons.unstyled
+                            li
+                              .circle.ribbon.ribbon-sale Sale
+                            li
+                              a.circle(href='images/poster2/1.jpg', data-toggle='lightbox')
+                                i.iconfont-search
+                      .entry-main
+                        h5.entry-title
+                          a(href='#') 阿凡达2AVATAR2
+                        .entry-price
+                          a(href='#')
+                            strong.price 影片详情
+                    .product(data-product-id='2', data-category='type|type-aiqing|type-juqing|type-guzhuang|country-dalu|country|good', data-price='60')
+                      .entry-media
+                        img.lazyLoad.thumb(data-src='images/poster2/2.jpg', alt='')
+                        .hover
+                          ul.icons.unstyled
+                            li
+                              .circle.ribbon.ribbon-new New
+                            li
+                              a.circle(href='images/poster2/2.jpg', data-toggle='lightbox')
+                                i.iconfont-search
+                      .entry-main
+                        h5.entry-title
+                          a(href='#') 捉妖记2 onster Hunt 2
+                        .entry-price
+                          a(href='#')
+                            strong.price 影片详情
+                    .product(data-product-id='3', data-category='type|type-guzhuang|type-kehuan|type-juqing|country-dalu|country', data-price='60')
+                      .entry-media
+                        img.lazyLoad.thumb(data-src='images/poster2/3.jpg', alt='')
+                        .hover
+                          ul.icons.unstyled
+                            li
+                              a.circle(href='images/poster2/3.jpg', data-toggle='lightbox')
+                                i.iconfont-search
+                      .entry-main
+                        h5.entry-title
+                          a(href='#') 西游记女儿国
+                        .entry-price
+                          a(href='#')
+                            strong.price 影片详情
+                    .product(data-product-id='4', data-category='type|type-dongzuo|type-kongbu|type-fangzui|country-dalu|country', data-price='60')
+                      .entry-media
+                        img.lazyLoad.thumb(data-src='images/poster2/4.jpg', alt='')
+                        .hover
+                          ul.icons.unstyled
+                            li
+                              a.circle(href='images/poster2/4.jpg', data-toggle='lightbox')
+                                i.iconfont-search
+                      .entry-main
+                        h5.entry-title
+                          a(href='#') 摸金校尉之九幽将军
+                        .entry-price
+                          a(href='#')
+                            strong.price 影片详情
+                    .product(data-product-id='5', data-category='type|type-kehuan|type-donghua|country-xianggang|country|best', data-price='70')
+                      .entry-media
+                        img.lazyLoad.thumb(data-src='images/poster2/5.jpg', alt='')
+                        .hover
+                          ul.icons.unstyled
+                            li
+                              .circle.ribbon.ribbon-sale Sale
+                            li
+                              a.circle(href='images/poster2/5.jpg', data-toggle='lightbox')
+                                i.iconfont-search
+                      .entry-main
+                        h5.entry-title
+                          a(href='#') 阴阳师Onmyoji 2018
+                        .entry-price
+                          a(href='#')
+                            strong.price 影片详情
+                    .product(data-product-id='6', data-category='type|type-kehuan|type-dongzuo|country-meiguo|country', data-price='45')
+                      .entry-media
+                        img.lazyLoad.thumb(data-src='images/poster2/6.jpg', alt='')
+                        .hover
+                          ul.icons.unstyled
+                            li
+                              a.circle(href='images/poster2/6.jpg', data-toggle='lightbox')
+                                i.iconfont-search
+                      .entry-main
+                        h5.entry-title
+                          a(href='#') 星核 Star Core
+                        .entry-price
+                          a(href='#')
+                            strong.price 影片详情
+                    .product(data-product-id='7', data-category='type|type-juqing|type-kehuan|country-meiguo|country|best', data-price='55')
+                      .entry-media
+                        img.lazyLoad.thumb(data-src='images/poster2/7.jpg', alt='')
+                        .hover
+                          ul.icons.unstyled
+                            li
+                              .circle.ribbon.ribbon-new New
+                            li
+                              a.circle(href='images/poster2/7.jpg', data-toggle='lightbox')
+                                i.iconfont-search
+                      .entry-main
+                        h5.entry-title
+                          a(href='#')  阿修罗 Asura
+                        .entry-price
+                          a(href='#')
+                            strong.price 影片详情
+                    .product(data-product-id='8', data-category='type|type-dongzuo|country-xianggang|country|good', data-price='55')
+                      .entry-media
+                        img.lazyLoad.thumb(data-src='images/poster2/8.jpg', alt='')
+                        .hover
+                          ul.icons.unstyled
+                            li
+                              a.circle(href='images/poster2/8.jpg', data-toggle='lightbox')
+                                i.iconfont-search
+                      .entry-main
+                        h5.entry-title
+                          a(href='#') 英伦对决 The Foreigner
+                        .entry-price
+                          a(href='#')
+                            strong.price 影片详情
+                  // // PRODUCT LAYOUT
+      // // SITE MAIN CONTENT
+      // SITE FOOTER
+      footer.page-footer
+        // WIDGET AREA
+        .widgets
+          .section
+            .container
+              .row
+                .col-xs-12.col-sm-12.col-md-3
+                  section.widget.widget-menu
+                    h5.widget-title 联系我们
+                    .widget-content
+                      ul.menu.iconed-list.unstyled
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-map-marker
+                          .list-content Sun Yat-sen University, SYSU
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-phone
+                          .list-content 123-456-789
+                        li
+                          span.list-icon
+                            i.round-icon.iconfont-envelope-alt
+                          .list-content email@themina.com
+                .col-xs-12.col-sm-12.col-md-6
+                  section.widget.widget-ads
+                    .widget-content
+                      .center-xs
+                        .ads
+                          a(href='#')
+                            img(src='images/demo/images-footer.jpg', alt='')
+                          .ads-caption.bottom-right
+                            a.btn.btn-default.btn-round(href='#')
+                              i.round-icon.iconfont-angle-right
+                              span.inline-middle More movie
+                .col-xs-12.col-sm-12.col-md-3
+                  section.widget.widget-subscription
+                    .vmid
+                      span.uppercase 友情链接
+                      a(href='#')
+                        img(src='img/visacard.png', alt='', width='40')
+                      a(href='#')
+                        img(src='img/mastercard.png', alt='', width='40')
+                      a(href='#')
+                        img(src='img/paypal.png', alt='', width='40')
+          // // SECOND ROW
+        // // WIDGET AREA
+        .footer-sub
+          .container
+            .row
+              .col-xs-12.col-sm-6
+                .footer-links.center-xs.clearfix
+                  | @We-see movie
+                .space10
+    script(src='javascripts/minified.js')
+    script(src='javascripts/jquery.nouislider.js')
+    script(src='javascripts/jquery.isotope.min.js')
+    script(src='javascripts/products.js')
