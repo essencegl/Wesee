@@ -5,73 +5,24 @@
 	<title>WE See 电影</title>
 	<meta name="description" content="we-see"/>
 	<meta name="keywords" content="movie"/>
-	<link rel="stylesheet" href="css/minified.css">
 	<link rel="stylesheet" href="css/owl.carousel.css">
-	<link rel="stylesheet" href="css/owl.theme.css">
 	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="css/owl.theme.css">
+	<link rel="stylesheet" href="css/minified.css">
 	<link rel="stylesheet" href="css/responsive.css">
-	<link rel="stylesheet" href="css/signin.css">
 	<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');</script>
-	<script src="js/modernizr.min.js"></script>
-	<script src="js/signin.js"></script>
-
+	<script src="js/modernizr.min.js"></script>	
 </head>
 
 <body class="home">
 <div id="page-wrapper">
-	<div id="LoginBox">
-		<div class="LoginBox_title">
-			WE SEE电影售票系统用户登录<a href="javascript:void(0)" title="关闭窗口" class="close_signin" id="closeBtn">×</a>
-		</div>
-		<div id="login_error_tips">用户名或者密码错误</div>
-		<div class="LoginBox_content">
-			用户名: <span class="inputBox"><input type="text" id="txtName" placeholder="账号/邮箱" /></span>
-			<a href="javascript:void(0)" title="提示" class="warning" id="warn">*</a>
-		</div>
-		<div class="LoginBox_content">
-			密&nbsp;&nbsp;&nbsp;&nbsp;码: <span class="inputBox"><input type="text" id="txtPwd" placeholder="密码" /></span>
-			<a href="javascript:void(0)" title="提示" class="warning" id="warn2">*</a>
-		</div>
-		<div class="LoginBox_content">
-			<a href="#" id="loginbtn">登录</a>
-		</div>
-		<img src="images/demo/register-footer.jpg" />
-	</div>
-
-	<div id="RegisterBox">
-		<div class="RegisterBox_title">
-			WE SEE电影售票系统用户注册<a href="javascript:void(0)" title="关闭窗口" class="close_register" id="closeBtn">×</a>
-		</div>
-		<form method='post'>
-			<div class="RegisterBox_content">
-				用户名&nbsp;&nbsp;&nbsp;: <span class="inputBox"><input type="text" id="register_txtName" placeholder="6~15位英文字母、数字或下划线用户名" required pattern="^[a-zA-z_0-9]{6,15}$" /></span>
-			</div>
-			<div class="RegisterBox_content">
-				密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;: <span class="inputBox"><input type="password" id="register_txtPwd" placeholder="6~18位英文字母、数字或下划线密码" required pattern="^[a-zA-z_0-9]{6,18}$"/></span>
-			</div>
-			<div id="judge_same_password">两次密码不一致</div>
-			<div class="RegisterBox_content">
-				重复密码: <span class="inputBox"><input type="password" id="again_txtPwd" placeholder="再次输入密码" required /></span>
-			</div>
-			<div class="RegisterBox_content">
-				邮&nbsp;&nbsp;&nbsp;&nbsp;箱&nbsp;&nbsp;&nbsp;: <span class="inputBox"><input type="text" id="register_email" placeholder="输入电子邮箱，注意邮箱格式" required pattern="^[a-zA-z_0-9]+@(([a-zA-z_0-9])+\.)+[a-zA-z]{2,4}$"/></span>
-			</div>
-			<div class="RegisterBox_content">
-				电&nbsp;&nbsp;&nbsp;&nbsp;话&nbsp;&nbsp;&nbsp;: <span class="inputBox"><input type="text" id="register_phone" placeholder="11位数字电话号码,不能以0开头" required pattern="^[^0]\d{10}$"/></span>
-			</div>
-			<div class="RegisterBox_content">
-				<input type="submit" id="registerbtn" value="注册">
-			</div>
-		</form>
-		<img src="images/demo/register-footer.jpg" />
-	</div>
 	<header id="site-header" role="banner">
 		<div class="header-top">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-7">
 						<div class="contact-info">
-							<i class="iconfont-film round-icon"></i>
+							<i class="iconfont-headphones round-icon"></i>
 							<strong>Welcome to WE-SEE movie</strong>
 							</div>
 					</div>
@@ -88,28 +39,29 @@
 									</form>
 								</div>
 							</li>
-							<li>
-								<a id="Login">
-									<i class="iconfont-user round-icon"></i>
+							<li data-toggle="sub-header" data-target="#sub-social">
+								<a href="checkout.html" id="social-icons">
+									<i class="iconfont-share round-icon"></i>
+								</a>
 								登陆
-								</a>
 							</li>
-							<li>
-								<a id="Register">
-									<i class="iconfont-road round-icon"></i>
-								注册
+							<li data-toggle="sub-header" data-target="#sub-cart">
+								<a href="register.html" id="total-cart">
+									<i class="iconfont-shopping-cart round-icon"></i>
 								</a>
+								注册
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
-
+			
+			<!-- ADD TO CART MESSAGE -->
 			<div class="cart-notification">
 				<ul class="unstyled"></ul>
 			</div>
+			<!-- // ADD TO CART MESSAGE -->
 		</div>
-
 
 		<div class="main-header-wrapper">
 			<div class="container">
@@ -138,6 +90,7 @@
 		</div>
 	</header>
 		
+		<!-- HOMEPAGE SLIDER -->
 	<div id="home-slider">
 		<div class="flexslider">
 			<ul class="slides">
@@ -461,19 +414,29 @@
 											<a href="#" class="pull-right">选座购票</a>
 										</div>
 									</div>
-								</div>						
-							</div>				
+								</div>
+							
+							</div>
+								
 						</div>
+						<!-- // END CAROUSEL -->
+						
 					</div>
 				</div>
 			</section>
+			<!-- // FEATURED PRODUCTS -->
+			
+			<!-- NEW ARRIVAL PRODUCTS -->
 			<section class="section new-arrivals visible-items-5">
 				<div class="container">
 					<div class="row">
 						<header class="section-header clearfix col-sm-6">
 							<h3 class="section-title">即将上映</h3>
 						</header>
+						
 						<div class="clearfix"></div>
+						
+						<!-- BEGIN CAROUSEL -->
 						<div id="new-arrivals-products" class="add-cart" data-product=".product" data-thumbnail=".entry-media .thumb" data-title=".entry-title > a" data-url=".entry-title > a" data-price=".entry-price > .price">
 						
 							<div class="owl-controls clickable outside">
@@ -654,13 +617,21 @@
 								</div>	
 							</div>
 							
-						</div>		
+						</div>
+						<!-- // END CAROUSEL -->
+						
 					</div>
 				</div>
 			</section>
+			<!-- // NEW ARRIVAL PRODUCTS -->
 			
 		</main>
+		<!-- // SITE MAIN CONTENT -->
+				
+		<!-- SITE FOOTER -->
 	<footer class="page-footer">
+		
+		<!-- WIDGET AREA -->
 		<div class="widgets">
 			<div class="section">
 				<div class="container">
@@ -722,7 +693,10 @@
 					</div>
 				</div>
 			</div>
+			<!-- // SECOND ROW -->
+			
 		</div>
+		<!-- // WIDGET AREA -->
 		
 		<div class="footer-sub">
 			<div class="container">
@@ -736,10 +710,20 @@
 				</div>
 			</div>
 		</div>
-	</footer>	
+		
+	</footer>
+	<!-- // SITE FOOTER -->
+		
 </div>
+<!-- // PAGE WRAPPER -->
+
+<!-- Essential Javascripts -->
 <script src="js/minified.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/jquery.flexslider-min.js"></script>
+<!-- // Essential Javascripts -->
+
+	<!-- Particular Page Javascripts -->
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- // Particular Page Javascripts -->
 </body>
 </html>
