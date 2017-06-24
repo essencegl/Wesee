@@ -22,7 +22,7 @@
 11 error There is likely additional logging output above.
 12 error System Windows_NT 6.2.9200
 13 error command "D:\\Study material\\大二上\\网页设计\\nodejs\\\\node.exe" "D:\\Study material\\大二上\\网页设计\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
-14 error cwd D:\Study material\大三下\系统分析与设计\电影售票系统项目\注册系统\homework_project-master
+14 error cwd D:\Study material\大三下\系统分析与设计\电影售票系统项目\test2\WeSee\WeSeeSystem
 15 error node -v v0.10.26
 16 error npm -v 1.4.3
 17 error code ELIFECYCLE
