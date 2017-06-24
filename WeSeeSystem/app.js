@@ -14,8 +14,6 @@ var now_show_page = require('./routes/now_show_page');
 var later_show_page = require('./routes/later_show_page');
 var personal_center = require('./routes/personal_center');
 
-
-
 var app = express();
 
 var mongoose = require('mongoose');
@@ -61,6 +59,7 @@ app.use('/now_show_page', now_show_page);
 app.use('/later_show_page', later_show_page);
 //个人中心路由
 app.use('/personal_center', personal_center);
+
 
 
 

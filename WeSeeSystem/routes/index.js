@@ -105,10 +105,6 @@ router.post('/regist', function(req, res) {
 	});
 });
 
-router.get('/detail', function(req, res, next) {
-	res.render('detail', { title: 'detail' , user:req.session.user, warning:""});
-});
-
 router.post("/order_seat", function(req, res, next) {
 	//订单处理
 	var order_temp = new OrderData({
