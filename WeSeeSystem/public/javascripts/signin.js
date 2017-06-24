@@ -100,34 +100,42 @@ $(function ($) {
 		var txtName = $("#register_txtName").val();
 		var password_1 = $("#register_txtPwd").val();
 		var password_2 = $("#again_txtPwd").val();
-		if (password_1 != password_2) {
-			$("#judge_same_password").css({display:"block"});
-			return false;
-		} else {
-			//所有注册项符合格式要求，提交到后台：
-			var register_username = $("#register_txtName").val();
-			var register_password = $("#register_txtPwd").val();
-			var register_email = $("#register_email").val();
-			var register_phone = $("#register_phone").val();
-			var body_data = {
-				username: register_username,
-				password: register_password,
-				mail: register_email,
-				phone: register_phone,
-			}
-			
-			$.post('regist', body_data, function(data) {
-				if (data == "false") {
-					$("#register_error_tips").css({ display: 'block' });
-				} else {
-					$("#RegisterBox").fadeOut("fast");
-					$("#mask").css({ display: 'none' });
-					$("#mask").remove();
-					$("#Login span").text(txtName);
-					alert("注册成功！");
+		var phone = $("#register_phone").val();
+		var email = $("#register_email").val();
+		if (!judge_username(txtName) ||
+			!judge_phone(phone) ||
+			!judge_mail(email)) {
+			$("#register_error_tips").css({ display: 'block' });
+	    } else {
+			if (password_1 != password_2) {
+				$("#judge_same_password").css({display:"block"});
+				return false;
+			} else {
+				//所有注册项符合格式要求，提交到后台：
+				var register_username = $("#register_txtName").val();
+				var register_password = $("#register_txtPwd").val();
+				var register_email = $("#register_email").val();
+				var register_phone = $("#register_phone").val();
+				var body_data = {
+					username: register_username,
+					password: register_password,
+					mail: register_email,
+					phone: register_phone,
 				}
-			});
-		}
+				
+				$.post('regist', body_data, function(data) {
+					if (data == "false") {
+						$("#register_error_tips").css({ display: 'block' });
+					} else {
+						$("#RegisterBox").fadeOut("fast");
+						$("#mask").css({ display: 'none' });
+						$("#mask").remove();
+						$("#Login span").text(txtName);
+						alert("注册成功！");
+					}
+				});
+			}    	
+	    }
 	});
 
 	$(".RegisterBox_content input").on('focus', function () {
@@ -158,3 +166,18 @@ $(function ($) {
 		$("#mask").remove();
 	});
 });
+
+var judge_username = function (str) { 
+	var re = /^[a-zA-z_0-9]{6,15}$/;
+	return re.test(str);
+}
+
+var judge_phone = function (str) {
+	var re = /^[^0]\d{10}$/;
+	return re.test(str);
+}
+
+var judge_mail = function (str) {
+	var re = /^[a-zA-z_0-9]+@(([a-zA-z_0-9])+\.)+[a-zA-z]{2,4}$/;
+	return re.test(str);
+}
