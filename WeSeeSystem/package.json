@@ -1,6 +1,6 @@
 {
-  "name": "express-test",
-  "description": "a express test",
+  "name": "WeSeeSystem",
+  "description": "a movie system",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -19,7 +19,5 @@
     "mongodb": "^2.1.2",
     "mongoose": "^4.4.12",
     "ws": "^2.2.3",
-    "connect-busboy": "0.0.2",
-    "busboy": "^0.2.14"
   }
 }
