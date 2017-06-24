@@ -124,6 +124,7 @@ $(function ($) {
 					$("#mask").css({ display: 'none' });
 					$("#mask").remove();
 					$("#Login span").text(txtName);
+					alert("注册成功！");
 				}
 			});
 		}

@@ -44,8 +44,9 @@ router.get('/personal_center', function(req, res, next) {
   } else {
 	console.log(req.session.user.username);
   	getOrderData(req.session.user.username).then(function(order_data) {
-  		console.log(order_data[0].toJSON());
   		res.render("personal_center", {order_data : order_data[0].toJSON(), session_username : req.session.user.username, username : req.session.user.username, phone : req.session.user.phone, email: req.session.user.mail});
+  	}, function(err) {
+  		res.render("personal_center", {order_data : {}, session_username : req.session.user.username, username : req.session.user.username, phone : req.session.user.phone, email: req.session.user.mail});
   	});
   }
 });
@@ -173,11 +174,13 @@ router.post("/order_seat", function(req, res, next) {
 		seatOrder: req.body.send_seat
 	});
 	//seat_data.save();
+	
 	SeatData.update({movie_title:req.body.movie_title}, {seatOrder: seat_data.seatOrder}, function(err) {
 		if (err) {
 			console.log(err);
 		}
 	});
+
 	res.send(true);
 });
 
@@ -185,6 +188,8 @@ router.post('/getSeatData', function(req, res, next) {
 	var title_ = req.body.movie_title;
 	getSeatData(title_).then(function(data) {
 		res.send(data[0].seatOrder);
+	}, function(data) {
+		console.log("getSeatData err");
 	});
 });
 
@@ -199,15 +204,23 @@ function getMovieData(num) {
 function getSeatData(title_) {
 	return new Promise(function(resolve, reject) {
 		SeatData.find({"movie_title" : title_}, function(err, data) {
-			resolve(data);
+			if (data.toString() != "") {
+				resolve(data);
+			} else {
+				reject(err);
+			}
 		});
 	});
 }
 
 function getOrderData(username) {
 	return new Promise(function(resolve, reject) {
-		OrderData.find({"order_username" : username}, function(err, data) {
-			resolve(data);
+		OrderData.find({"order_username" : username}).sort({date : -1}).exec(function(err, data) {
+			if (data.toString() != "") {
+				resolve(data);
+			} else {
+				reject(err);
+			}
 		});
 	});
 }
