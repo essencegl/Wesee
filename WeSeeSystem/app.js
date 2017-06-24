@@ -10,9 +10,16 @@ var session = require('express-session');
 var busboy = require("connect-busboy");
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var now_show_page = require('./routes/now_show_page');
+var later_show_page = require('./routes/later_show_page');
+var personal_center = require('./routes/personal_center');
+
+
 
 var app = express();
+
+var mongoose = require('mongoose');
+var db = mongoose.connect('mongodb://localhost/WeSeeMovie');
 
 //设定views系统变量，意为视图存放的目录，即将视图当前目录的views文件夹下面
 app.set('views', path.join(__dirname, 'views'));
@@ -46,8 +53,16 @@ app.use(busboy({
 
 app.use(express.static(path.join(__dirname, 'public'))); //设置静态文件目录
 
+//主页路由，包括Home和登陆注册的处理
 app.use('/', index);
-app.use('/users', users);
+//正在热映路由
+app.use('/now_show_page', now_show_page);
+//即将上映路由
+app.use('/later_show_page', later_show_page);
+//个人中心路由
+app.use('/personal_center', personal_center);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -13,8 +13,6 @@ var MovieData = moviemodels.MovieData;
 var SeatData = seatmodels.seatData;
 var OrderData = ordermodels.orderData;
 
-var db = mongoose.connect('mongodb://localhost/WeSeeMovie');
-
 var judge = 0;
 
 /* GET home page. */
@@ -27,35 +25,6 @@ router.get('/home', function(req, res, next) {
   	res.render("home", {session_username : "登陆"});
   } else {
   	res.render("home", {session_username : req.session.user.username});
-  }
-});
-
-router.get('/now_show_page', function(req, res, next) {
-  if (!req.session.user) {
-  	res.render("now_show_page", {session_username : "登陆"});
-  } else {
-  	res.render("now_show_page", {session_username : req.session.user.username});
-  }
-});
-
-router.get('/personal_center', function(req, res, next) {
-  if (!req.session.user) {
-  	res.render("personal_center", {order_data : {}, session_username : "登陆", username : "未登陆", phone : "未登录", email: "未登录"});
-  } else {
-	console.log(req.session.user.username);
-  	getOrderData(req.session.user.username).then(function(order_data) {
-  		res.render("personal_center", {order_data : order_data[0].toJSON(), session_username : req.session.user.username, username : req.session.user.username, phone : req.session.user.phone, email: req.session.user.mail});
-  	}, function(err) {
-  		res.render("personal_center", {order_data : {}, session_username : req.session.user.username, username : req.session.user.username, phone : req.session.user.phone, email: req.session.user.mail});
-  	});
-  }
-});
-
-router.get('/later_show_page', function(req, res, next) {
-  if (!req.session.user) {
-  	res.render("later_show_page", {session_username : "登陆"});
-  } else {
-  	res.render("later_show_page", {session_username : req.session.user.username});
   }
 });
 
@@ -107,12 +76,6 @@ router.post('/signin_valid', function(req, res, next) {
     	res.send("false");
     });
 });
-
-/*
-router.get('/regist', function(req, res) {
-    res.render('regist', {title: '注册', user : {}, repeat:{}});
-});
-*/
 
 router.post('/regist', function(req, res) {
 	judge = 0;
@@ -193,6 +156,7 @@ router.post('/getSeatData', function(req, res, next) {
 	});
 });
 
+//获取电影信息 根据电影海报编号 也就是电影编号 在数据库中查找
 function getMovieData(num) {
 	return new Promise(function(resolve, reject) {
 		MovieData.find({'poster' : num}, function(err, data) {
@@ -201,6 +165,7 @@ function getMovieData(num) {
 	});
 }
 
+//获取座位表
 function getSeatData(title_) {
 	return new Promise(function(resolve, reject) {
 		SeatData.find({"movie_title" : title_}, function(err, data) {
@@ -213,18 +178,7 @@ function getSeatData(title_) {
 	});
 }
 
-function getOrderData(username) {
-	return new Promise(function(resolve, reject) {
-		OrderData.find({"order_username" : username}).sort({date : -1}).exec(function(err, data) {
-			if (data.toString() != "") {
-				resolve(data);
-			} else {
-				reject(err);
-			}
-		});
-	});
-}
-
+//用户名是否存在判断
 function username_not_repeat(user) {
 	return new Promise(function(resolve, reject){
 		User.find({'username' : user.username}, function(err, docs) {
@@ -236,6 +190,7 @@ function username_not_repeat(user) {
 	});
 }
 
+//电话是否存在判断
 function phone_not_repeat(user) {
 	return new Promise(function(resolve, reject){
 		User.find({'phone' : user.phone}, function(err, docs) {
@@ -247,6 +202,7 @@ function phone_not_repeat(user) {
 	});
 }
 
+//邮箱是否存在判断
 function mail_not_repeat(user) {
 	return new Promise(function(resolve, reject){
 		User.find({'mail' : user.mail}, function(err, docs) {
@@ -258,6 +214,7 @@ function mail_not_repeat(user) {
 	});
 }
 
+//判断用户名密码是否一致
 function user_valid(user) {
 	return new Promise(function(resolve, reject) {
 		User.find({'username': user.username, 'password': user.password}, function(err, docs) {
